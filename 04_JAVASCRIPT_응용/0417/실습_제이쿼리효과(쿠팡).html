@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습_제이쿼리효과(쿠팡) 메인슬라이드 구현하기</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    header{
+      height: 70px; background-color: #ccc;
+      text-align: center;
+    }
+    header h1 img{width: 250px; padding-top: 10px;}
+    .slide_wrapper div{display: none;}
+    .slide_wrapper div:first-child{display: block;}
+    .act{border:2px solid #00f !important;}
+
+    /* 내비게이션 서식 */
+    article{position: relative;}
+    .lnb{position: absolute; right: 100px; top: 45px;}
+    .lnb > ul > li{list-style: none; border: 2px solid #fff;}
+    .lnb > ul > li:hover{border: 2px solid #00f;}
+    .lnb img{display: block;}
+  </style>
+  <!-- 1. 제이쿼리 라이브러리 연결하기 -->
+  <script src="./script/jquery-3.7.1.js"></script>
+  <!-- 2. 제이쿼리 랩퍼 -->
+  <script>
+    $(document).ready(function(){
+      //1. 메뉴변수
+      let lnb = $('.lnb > ul > li');
+      let slide = $('.slide_wrapper > div');
+      let i = 0;
+      lnb.eq(i).addClass('act');
+
+      //2. 마우스오버시 해당 인덱스값을 구한다.
+      lnb.mouseenter(function(){
+        i = $(this).index(); // index는 해당 요소의 번호
+        console.log(i);
+        //일단 기존에 있던 목록 테두리 서식도 지운다.
+        lnb.removeClass('act');
+        //마우스 올린 목록에만 서식을 적용한다
+        lnb.eq(i).addClass('act');
+
+        //일단 보이는 이미지는 숨긴다. 
+        slide.hide();        
+        //해당 인덱스 번호에 맞는 이미지가 보여지게 한다.
+        slide.eq(i).show(); //eq는 인덱스를 보여주는 메서드
+
+        // 마우스를 올리면 기존 자동으로 움직이는 시간을 제거하여 멈추게하고
+        clearInterval(Timer);
+      });
+
+      lnb.mouseleave(function(){ //마우스를 다시 빼면 기존에 있던 시간을 다시 흐르게 한다.
+        Timer = setInterval(auto_slide,3000); //Timer은 이미 한번 선언한 변수이기 때문에 let을 쓰지 않는다. 
+      });
+
+      //자동으로 움직이게 하는 함수
+      function auto_slide(){
+        if(i==5){
+          i=0;
+        }else{
+          i++;
+        }
+        //일단 기존에 있던 목록 테두리 서식도 지운다.
+        lnb.removeClass('act');
+        //마우스 올린 목록에만 서식을 적용한다
+        lnb.eq(i).addClass('act');
+
+        //일단 보이는 이미지는 숨긴다. 
+        slide.hide();        
+        //해당 인덱스 번호에 맞는 이미지가 보여지게 한다.
+        slide.eq(i).show(); //eq는 인덱스를 보여주는 메서드
+      }
+      let Timer = setInterval(auto_slide,3000);
+    });
+    
+  </script>
+</head>
+<body>
+  <header>
+    <h1>
+      <a href="index.html">
+        <img src="./images/logo_coupang.png" alt="상단로고">
+      </a>
+    </h1>
+  </header>
+  <main>
+    <article class="slide_container">
+      <nav class="lnb">
+        <ul>
+          <li><a href="#" title=""><img src="./images/btn01.jpg" alt="메뉴"></a></li>
+          <li><a href="#" title=""><img src="./images/btn02.jpg" alt="메뉴"></a></li>
+          <li><a href="#" title=""><img src="./images/btn03.png" alt="메뉴"></a></li>
+          <li><a href="#" title=""><img src="./images/btn04.jpg" alt="메뉴"></a></li>
+          <li><a href="#" title=""><img src="./images/btn05.png" alt="메뉴"></a></li>
+          <li><a href="#" title=""><img src="./images/btn06.jpg" alt="메뉴"></a></li>
+        </ul>
+      </nav>
+      <div class="slide_wrapper">
+        <div class="slide"><img src="./images/banner01.jpg" alt=""></div>
+        <div class="slide"><img src="./images/banner02.jpg" alt=""></div>
+        <div class="slide"><img src="./images/banner03.jpg" alt=""></div>
+        <div class="slide"><img src="./images/banner04.jpg" alt=""></div>
+        <div class="slide"><img src="./images/banner05.jpg" alt=""></div>
+        <div class="slide"><img src="./images/banner06.jpg" alt=""></div>
+      </div>
+    </article>
+  </main>
+  <footer></footer>
+</body>
+</html>

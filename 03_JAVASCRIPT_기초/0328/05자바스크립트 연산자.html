@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />d
+  <title>05자바스크립트 연산자</title>
+  <style>
+    .book *{margin: 0; padding: 0;} /*book안에 있는 모든 요소 초기화*/
+    .book{
+      width: 458px;
+      border: 3px solid #000;
+      padding: 5px;
+      text-align: right;
+    }
+    .book > h3{
+      text-align: center;
+      line-height: 50px;
+    }
+    .book i.fas{
+      font-size: 30px;
+      padding: 7px 10px;
+      border: 1px solid #333;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>05자바스크립트 연산자</h2>
+  <p>자바스크립트 연산자는 사용자가 조건식을 만들어서 원하는 결과를 출력하고자 할 때 사용하는 기호이다.</p>
+  <ul>
+    <li>산술연산자 : +, -, *, /, %(나머지값)</li>
+    <li>문자열 결합 연산다 : +(문자+문자, 문자+숫자 결합시 사용)</li>
+    <li>비교연산자 : >, <, >=, <==, ==,===</li>
+    <li>대입연산자 : =, +=, -+</li>
+    <li>증감연산자 : ++(1씩 증가), ==(1씩 감소)</li>
+    <li>논리연산자 : And(모두 조건에 만족시 실행), OR(여러 조건중에 하나만 만족시 실행)</li>
+    <li>삼항조건연산자 : 조건식?조건에 맞는 결과:조건에 맞지 않는 결과</li>
+    <li>타입연산자 : typeof(데이터의 형식을 알려주는 연산자)</li>
+  </ul>
+
+  <h3>실습예제 - 교보문고 책 이미지를 활용하여 좌, 우 버튼 클릭시 페이지 번호, 이미지 변경하기</h3>
+  <p>네이버 쇼핑 카테고리, 교보문고 미리보기 책 콘텐츠, 여행사이트의 상품보기, 쇼핑몰의 상품목록 보기 등에서 활용할 수 있다.</p>
+  <p>구현방법 : 좌, 우측 방향버튼 클릭시 숫자 증가, 감소 기능을 구현하고, 변수값이 변경되면 이미지 파일명의 숫자도 같이 대입하여 변경하게 된다.</p>
+  <article class="book">
+    <h3>취미/실용/스포츠</h3>
+    <span id="page_num">&nbsp;</span>
+    <i class="fas fa-angle-left" id="l_btn"></i>
+    <i class="fas fa-angle-right" id="r_btn"></i>
+    <div id="b_item">
+      <img src="./images/book1.jpg" alt="" id="b_img">
+    </div>
+  </article>
+
+  <script>
+    // 1. 변수선언
+    let n = 1;
+    const t_n = 5;
+    const l_btn = document.getElementById('l_btn');
+    const r_btn = document.getElementById('r_btn');
+
+    // 2. 1/5 출력하기
+    document.getElementById('page_num').innerHTML='<b>' + n + '</b>' + '/' + t_n;
+
+    //3. 좌, 우버튼 클릭시 각각 함수안에 내용 작성하여 번호변경하기
+    l_btn.onclick=function(){
+      // window.alert('좌측버튼 클릭');
+      // 5, 4, 3, 2, 1
+      if(n==1){
+        n=5;
+      }else{
+        n--;
+      }
+      //번호 변경
+      document.getElementById('page_num').innerHTML='<b>' + n + '</b>' + '/' + t_n;
+      //이미지 변경
+      document.getElementById('b_img').src='./images/book'+ n +'.jpg'
+    }
+
+    r_btn.onclick=function(){
+      // window.alert('우측버튼 클릭');
+      // 1, 2, 3, 4, 5
+      if(n==5){
+        n=1;
+      }else{
+        n++;
+      }
+      //번호 변경
+      document.getElementById('page_num').innerHTML='<b>' + n + '</b>' + '/' + t_n;
+      //이미지 변경
+      document.getElementById('b_img').src='./images/book'+n+'.jpg'
+    }
+
+  </script>
+</body>
+</html>

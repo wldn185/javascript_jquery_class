@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습_제이쿼리 문서객체 조작_(쿠팡)</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    ul, li{list-style: none;}
+    header{
+      height: 70px; background-color: #ccc;
+      text-align: center;
+    }
+    header h1 img{width: 250px; padding-top: 10px;}
+    article{position: relative;}
+    /* 메인슬라이더이미지 서식 */
+    .lnb + img{width: 100%; position: absolute; top: 0; left: 0;}
+    /* 내비게이션 서식 */
+    .lnb{
+      position: absolute; 
+      right: 10%; top: 45px; 
+      z-index: 100;
+    }
+    .lnb > ul{}
+    .lnb > ul > li{
+      border: 3px solid #fff;
+    }
+    .lnb > ul > li:hover{
+      border: 3px solid #00f;
+    }
+    .lnb img{display: block;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      <a href="index.html">
+        <img src="./images02/logo_coupang.png" alt="상단로고">
+      </a>
+    </h1>
+  </header>
+  <main>
+    <article class="slide_container">
+      <nav class="lnb">
+        <ul>
+          <li><a href="./images02/main_slide1.jpg" title=""><img src="./images02/menu01.jpg" alt=""></a></li>
+          <li><a href="./images02/main_slide2.jpg" title=""><img src="./images02/menu02.jpg" alt=""></a></li>
+          <li><a href="./images02/main_slide3.jpg" title=""><img src="./images02/menu03.jpg" alt=""></a></li>
+          <li><a href="./images02/main_slide4.jpg" title=""><img src="./images02/menu04.jpg" alt=""></a></li>
+          <li><a href="./images02/main_slide5.jpg" title=""><img src="./images02/menu05.jpg" alt=""></a></li>
+          <li><a href="./images02/main_slide6.jpg" title=""><img src="./images02/menu06.jpg" alt=""></a></li>
+        </ul>
+      </nav>
+      <img src="./images02/main_slide1.jpg" alt="" id="main_img">
+    </article>
+  </main>
+  <footer></footer>
+
+  <!-- 1. 제이쿼리 라이브러리 연결하기 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      let mnu = $('.slide_container a');
+      let img_url;
+      mnu.mouseenter(function(){
+        img_url = $(this).attr('href');
+        $('#main_img').attr('src',img_url);
+      });
+
+      mnu.click(function(e){
+        e.preventDefault();
+      });
+
+    });
+  </script>
+</body>
+</html>

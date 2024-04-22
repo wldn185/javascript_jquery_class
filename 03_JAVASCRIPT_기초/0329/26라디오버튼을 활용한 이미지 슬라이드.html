@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라디오버튼을 활용한 이미지 슬라이드</title>
+  <style>
+    *{margin: 0px; padding: 0px;}
+    li{list-style-type: none;}
+    a{text-decoration: none; color: #333;}
+    article{
+      width: 580px; height: 400px;
+      border: 10px solid #fff;
+      border-bottom: 25px solid #fff;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgb(177, 177, 177);
+    }
+    .travel{
+      width: 580px; height: 377px; overflow: hidden;
+    }
+    .travel > ul{
+      display: flex;
+      width: 2320px;
+      transition: 0.3s;
+      position: relative;
+      left: 0;
+    }
+    .travel > ul > li{}
+    .travel > ul > li img{
+      width: 580px; height: 377px;
+    }
+    .travel > ul > li img:hover{
+      transition: 0.1s;
+      transform: scale(1.2);
+      filter: brightness(0.9);
+    }
+    input{display: none;}
+    /* 버튼 각각 클릭시 ul태그의 위치값을 변경하여 이미지슬라이드 되게 하기 */
+    #btn01:checked ~ .travel > ul{left: 0;}
+    #btn02:checked ~ .travel > ul{left: -580px;}
+    #btn03:checked ~ .travel > ul{left: -1160px;}
+    #btn04:checked ~ .travel > ul{left: -1740px;}
+  </style>
+</head>
+<body>
+  <h2>라디오버튼을 활용한 이미지 슬라이드</h2>
+  <article>
+    <input type="radio" id="btn01" name="a" checked>
+    <input type="radio" id="btn02" name="a">
+    <input type="radio" id="btn03" name="a">
+    <input type="radio" id="btn04" name="a">
+
+    <div class="travel">
+      <ul>
+        <li><a href="#" title="여행"><img src="./images/photo01.jpg" alt=""></a></li>
+        <li><a href="#" title="여행"><img src="./images/photo02.jpg" alt=""></a></li>
+        <li><a href="#" title="여행"><img src="./images/photo03.jpg" alt=""></a></li>
+        <li><a href="#" title="여행"><img src="./images/photo04.jpg" alt=""></a></li>
+      </ul>
+    </div>
+    <label for="btn01" class="btn btn01">사진1</label>
+    <label for="btn02" class="btn btn02">사진2</label>
+    <label for="btn03" class="btn btn03">사진3</label>
+    <label for="btn04" class="btn btn04">사진4</label>
+  </article>
+</body>
+</html>

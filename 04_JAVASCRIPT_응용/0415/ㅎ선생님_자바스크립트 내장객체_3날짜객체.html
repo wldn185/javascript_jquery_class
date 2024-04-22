@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 내장객체_3 Date객체</title>
+  <style>
+    #food{
+      width:300px;height:300px;
+      border:2px solid #000;
+      text-align:center;
+    }
+    #food span{
+      background:#fff;
+      border:2px solid #000;
+      padding:3px 4px;
+      background:#ff0;
+      position:relative;top:-10px;
+    }
+    #food img{
+      padding-top:20px;
+      width:280px;
+      height:250px;
+    }
+  </style>
+</head>
+<body>
+  <h2>자바스크립트 내장객체_3 Date객체 - 날짜, 시간</h2>
+  <p>Date객체는 현재 또는 특정 날짜와 시간에 대한 정보를 제공하는 객체이다.</p>
+  <p>웹페이지의 증권, 은행, 뉴스페이지 등에 오늘의 날짜와 시간을 표시, 게시판</p>
+  <p>작성법) let 변수명 = new Date();</p>
+
+  <h3>날짜와 시간정보를 제공하는 Date객체 속성들</h3>
+  <p>getFullYear() : 날짜정보에서 연도에 대한 정보를 제공</p>
+  <p>getMonth() : 날짜정보에서 월(0-11)에 대한 정보를 제공 (출력시 : 월+1을 더함)</p>
+  <p>getDate() : 날짜정보에서 일에 대한 정보를 제공</p>
+  <p>getDay() : 날짜정보에서 요일에 대한 정보를 숫자로 제공(0-일, 1-월, 2-화, 3-수, 4-목, 5-금, 6-토)</p>
+  <p>getHour() : 날짜정보에서 시간(0-23)에 대한 정보를 제공</p>
+  <p>getMinutes() : 날짜정보에서 분에 대한 정보를 제공</p>
+  <p>getSecond() : 날짜정보에서 초(0-59)에 대한 정보를 제공</p>
+  <p>getMilliseconds() : 날짜정보에서 밀리초(1/1000)에 대한 정보를 제공</p>
+
+  <h3>실시간 디지털 시계표시하기 - 글자색(파랑), 크기(30px), 배경(노랑)</h3>
+  <div id="clock"></div>
+
+  <script>
+    document.write('<hr>');
+
+    //날짜객체 생성하기
+    let today = new Date();
+
+    //날짜객체와 메서드로 정보출력하기
+    document.write(today+"<br>");
+    document.write(today.getFullYear()+"<br>"); //년도
+    document.write(today.getMonth()+1+"월 0-11 <br>"); //월 1을 더해야...
+    document.write(today.getDate()+"일<br>"); //일
+    document.write(today.getDay()+"<br>"); //요일 0-6까지 숫자로 출력 
+
+    //배열객체로 요일 출력
+    let yoil = ['일','월','화','수','목','금','토'];
+    document.write(yoil[today.getDay()]); //월요일이 출력됨.
+
+    document.write('<br>');
+    document.write(today.getHours()+"시<br>"); //시
+    document.write(today.getMinutes()+"분<br>"); //분
+    document.write(today.getSeconds()+"초<br>"); //초
+    document.write(today.getMilliseconds()+"밀리초<br>"); //밀리초(1/1000)
+
+    // 실시간 디지털 시계
+    function clock(){
+      let today2 = new Date();
+      let h = today2.getHours(); //시
+      let m = today2.getMinutes(); //분
+      let s = today2.getSeconds(); //초
+
+      //시,분,초 앞에 '0'문자열 붙이기
+      h = checkTime(h);
+      m = checkTime(m);
+      s = checkTime(s);
+
+      document.getElementById('clock').innerHTML=`<p>${h}:${m}:${s}</p>`;
+
+      let t = setTimeout(clock,500); //시간객체를 통해 지정한 함수를 시간마다 호출하여 반복실행한다.
+    }
+
+    function checkTime(a){ //시, 분, 초값을 받아와서
+      if(a < 10){ //만약에 시, 분, 초값이 10보다 작을 경우에만
+        a = '0' + a; //기존 값에 '0'  문자열값을 붙이고
+      } 
+      return a; //그렇지 않은 경우 그냥 출력하도록 함.
+    }
+    
+    // 함수호출하여 시간을 출력한다.
+    clock();
+
+
+  </script>
+
+  <h3>요일별 추천요리 출력하기</h3>
+  <div id="food"></div>
+
+  <script>
+    //날짜객체
+    let today3 = new Date();
+
+    let day = today.getDay(); //요일번호
+
+    let array = ['일', '월', '화', '수' , '목', '금', '토'];
+    let food = ['food1.jpg', 'food2.jpg', 'food3.jpg', 'food4.jpg','food5.jpg','food6.jpg','food7.jpg']
+
+    //오늘(월)의 추천요리는 '000'입니다.
+    document.getElementById('food').innerHTML=`
+      <span>오늘의 (${array[day]})추천요리는</span> 
+      <img src="./food/${food[day]}" alt=""> 
+    `
+  </script>
+
+</body>
+</html>

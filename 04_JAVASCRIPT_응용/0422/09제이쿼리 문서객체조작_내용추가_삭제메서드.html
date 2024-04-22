@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09제이쿼리 문서객체조작_내용추가_삭제메서드</title>
+  <style>
+    ul{border: 3px solid #f00;}
+    .box01{
+      background-color: #ff0; 
+      border: 3px solid #00f;
+      width: 600px; height: 150px;
+    }    
+  </style>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#btn01').click(function(){
+        $('.list01').append('<li>append메서드로 내용추가하기</li>');
+      });
+      $('#btn02').click(function(){
+        $('.list01').prepend('<li>prepend메서드로 내용추가하기</li>');
+      });
+      $('#btn03').click(function(){
+        $('.list01').after('<p>after메서드로 내용추가하기</p>');
+      });
+      $('#btn04').click(function(){
+        $('.list01').before('<p>before메서드로 내용추가하기</p>');
+      });
+      $('#btn05').click(function(){
+        $('.box01').remove();
+      });
+      $('#btn06').click(function(){
+        $('.box01').empty();
+      });
+
+      // 박스 다시 살리기(한번만)
+      const box = `
+      <div class='box01'>아래 remove버튼을 클릭하면 이 박스요소가 제거됩니다.<br>아래 empty버튼을 클릭하면 이 박스요소안에 있는 내용만 제거됩니다.</div>`;
+
+      $('#btn07').click(function(){
+        /*
+        if($('.box01').length>0){ //박스01의 개수가 0보다 크면 즉, 하나 이상일때, 박스가 있다면
+          alert('박스가 이미 있습니다.');
+        }else{
+          $('.list02').after(box); //.list02의 뒤에 box변수 내용을 출력
+        }
+        */
+        if($('.box01').hasClass('box01')==true){
+          alert('박스가 이미 있습니다.');
+        }else{
+          $('.list02').after(box); //.list02의 뒤에 box변수 내용을 출력
+        }
+      });
+
+      // 내용 다시 살리기(한번만)
+      $('#btn08').click(function(){
+        if($('.box01').hasClass('box01')==true){
+          $('.box01').html('아래 remove버튼을 클릭하면 이 박스요소가 제거됩니다.<br>아래 empty버튼을 클릭하면 이 박스요소안에 있는 내용만 제거됩니다.');
+        }
+      });
+    });
+
+  </script>  
+</head>
+<body>
+  <h2>09제이쿼리 문서객체조작_내용추가_삭제메서드</h2>
+  <p>DOM(문서객체모델)에서 문서안의 요소에 내용을 추가하거나 삭제할 수 있다.</p>
+
+  <!-- 이미 학습함 -->
+  <p>클래스조작(addClass, removeClass, toggleClass, hasClass)</p>
+  <p>속성조작(attr)</p>
+  <p>내용조작(text html)</p>
+
+  <ul class="list01">
+    <li>append(); - 사용자가 선택한 요소를 기준으로 안쪽으로 맨 뒤쪽에 내용을 추가</li>
+    <li>prepend(); - 사용자가 선택한 요소를 기준으로 안쪽으로 맨 앞쪽에 내용을 추가</li>
+    <li>after(); - 사용자가 선택한 요소를 기준으로 바깥쪽으로 맨뒤에 내용을 추가</li>
+    <li>before(); - 사용자가 선택한 요소를 기준으로 바깥쪽으로 맨앞에 내용을 추가</li>
+  </ul>
+
+  <input type="button" value="append()" id="btn01">
+  <input type="button" value="prepend()" id="btn02">
+  <input type="button" value="after()" id="btn03">
+  <input type="button" value="before()" id="btn04">
+
+  <p>insertAfter(), insertBefore()를 사용하면 A라는 요소의 앞쪽에 B라는 요소를 배치할 수 있고, B라는 요소 뒤쪽에 A요소를 배치할 수 있다. after(), before()메소드와 기능은 같지만 사용법이 다르다.</p>
+  <p>예<br>
+    $('A').after('B'); - A요소의 바깥쪽으로 뒤에 B내용을 추가한다.<br>
+    $('B').insertAfter('A') - A요소의 바깥쪽으로 뒤에 B내용을 추가한다.
+  </p>
+
+  <h3>문서객체조작 - 내용을 삭제하기 우한 메서드(remove)</h3>
+  <p>사용자가 선택한 요소의 내용만 삭제하고나, 아예 태그요소를 삭제할 수도 있다.</p>
+  <ul class="list02">
+    <li>remove() - 사용자가 선택한 요소를 제거</li>
+    <li>empty() - 사용자가 선택한 요소의 내용만 제거</li>
+  </ul>
+
+  <p class="box"></p>
+  <div class="box01">
+    아래 remove버튼을 클릭하면 이 박스요소가 제거됩니다.<br>
+    아래 empty버튼을 클릭하면 이 박스요소안에 있는 내용만 제거됩니다.
+  </div>
+
+  <input type="button" id="btn05" value="remove()메서드 실행">
+  <input type="button" id="btn06" value="empty()메서드 실행">
+  <input type="button" id="btn07" value="박스 다시 살리기(한번만)">
+  <input type="button" id="btn08" value="내용 다시 살리기(한번만)">
+
+  <dl>
+    <dt>조건식 만들기</dt>
+    <dd>javascript - if(document.getElementById('태그명')){//존재하면 실행}</dd>
+    <dd>jquery - if($(.box01).length>0){//존재하면 실행}</dd>
+    <dd>jquery - if($(.box01).hasClass=='true'){//존재하면 실행}</dd>
+  </dl>
+
+</body>
+</html>

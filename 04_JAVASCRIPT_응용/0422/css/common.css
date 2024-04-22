@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+/* header, footer 공통서식 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+:root{
+  --main_font:"Nanum Gothic";
+  --main_color:#333;
+  --main_color2:#ff7c98;
+  --base_font_size:13px;
+}
+
+body{
+  font-family: var(--main_font), san-serif, arial;
+  font-size:var(--base_font_size);
+  color:var(--main_color);
+}
+a{
+  text-decoration:none;
+  color:var(--main_color);
+}
+/* header서식 */
+header{
+  width:100%;
+  border-top:3px solid var(--main_color2);
+  background:url('../images/bg_header.gif');
+}
+.h_top{}
+.h_top > h1{
+  width:92px;height:92px;
+  margin:0 auto;
+  padding:15px 0px;
+}
+
+/* h_bottom서식 */
+.h_bottom{
+  width:100%;height:46px;
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #333333;
+  background:#fff;
+  position:absolute;z-index:1000;
+  overflow:hidden;
+  /* transition:0.5s; js일경우 */
+}
+.h_bottom > nav{
+  width:1200px;
+  margin:0 auto;
+  display:flex;
+  justify-content: space-between; /* 간격을 동일하게 하면서 좌, 우측 여백없이 붙임 */
+}
+
+.lnb, .gnb{
+  display:flex;
+  justify-content: space-around; /* 좌, 우 간격을 동일하게 배치 양쪽끝에서 여백이 존재함 */
+}
+.gnb::after{
+  /* display:block; */
+  content:"";opacity:0;
+  transition:0.3s;
+  width:100%;height:1px;
+  background:#ffffff;
+  position:absolute; top:46px;left:0px;
+}
+.gnb:hover::after{
+  /* display:block; */
+  content:"";opacity:1;
+  width:100%;height:1px;
+  background:#483834;
+  position:absolute; top:46px;left:0px;
+}
+
+.lnb{width:200px;}
+.lnb > li{
+  padding:0px 18px;
+  line-height:46px;
+  text-align:center;
+}
+.lnb > li > a{
+  font-size:var(--base_font_size);
+  font-weight:bold;
+}
+.lnb li:first-child a{
+  color:var(--main_color2);
+}
+.lnb li:last-child a{color:#483834;}
+
+/* 메인메뉴 서식 */
+.gnb{width:1000px;}
+.gnb > li:first-child ul >li{padding-top:10px;}
+.gnb > li{
+  line-height:46px;text-align:center;
+  position:relative;padding:0px 22px;
+}
+.gnb > li > a{
+  font-size:var(--base_font_size);
+  font-weight:bold;
+  color:#3c0a0a;
+}
+nav a{text-transform: uppercase;}
+
+/* 서브메뉴 서식 */
+.sub{position:absolute;width:100%;left:0px;}
+.sub a{font-size:var(--base_font_size);}
+.sub a:hover{color:var(--main_color2);}
+.gnb > li:nth-child(2) .sub, .gnb > li:nth-child(4) .sub{width:100px;left:-10px;}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08자바스크립트_제어문02_switch_case</title>
+</head>
+<body>
+  <h2>08자바스크립트_제어문02_switch_case</h2>
+  <p>제어문02_switch_case(선택문)은 사용자가 만든 조건이 만족할 때 실행되고, 프로ㅡ램이 그자리에서 종료되는 제어문이다.</p>
+  <p>선택문은 조건의 값이 정확하게 일치해야 하는게 다른 조건문과 차이점이다.</p>
+  <p>break문 - 조건식에서 원하는 값이 나왔을 때 프로그램이 정지된다.</p>
+
+  <pre>
+    switch (값) {
+      case 조건값0 : 출력될값;break;
+      case 조건값1 : 출력될값;break;
+      default : 출력될값;
+    }
+  </pre>
+
+  <h3>실습1. 사용자가 입력한 숫자에 따라 원하는 결과가 나오게 하기</h3>
+  <p>명렬프롬프트를 사용하여 사용자가 1값을 입력하면 '해외여행 상품권', 2를 입력하면 '대형TV', 3을 입력하면 '상품권', 그외에는 '다음 기회에...'라고 출력하기</p>
+
+  <script>
+    let n = prompt('숫자를 입력하세요.');
+    switch (n){ //변수 n에 담겨진 데이터 형식에 따라 결과가 달라진다. n에 연산을 하면 숫자로 인식되고 안하면 문자로 인식한다. 문자로 인식되는 경우에는 조건에 ''를 붙여줘야한다.
+      case '1': document.write('해외여행 상품권에 당첨되셨습니다'); break; //1이 되면 해외여행상품권 그리고 더이상 진행할 필요 없다는 break;
+      case '2': document.write('대형TV에 당첨되셨습니다');break;
+      case '3': document.write('상품권에 당첨되셨습니다.');break;
+      default:document.write('다음 기회에....'); 
+    } //컴퓨터는 사용자가 숫자를 쳐도 그것이 숫자인지 문자인지 모른다. 숫자와 문자를 구분해주기 위해 조건에 ''을 써준다.
+
+    let n1 = prompt('홀수, 짝수 숫자를 구분하기 위해 숫자를 입력하세요.');    
+    switch (n1 = n1%2){
+      case 0:document.write('<p>입력하신 숫자는 <strong>짝수</strong>입니다.</p>');break;
+      case 1:document.write('<p>입력하신 숫자는 <strong>홀수</strong>입니다</p>');break;
+      default:document.write('<p>올바른 숫자를 입력해주세요.</p>');
+    }
+  </script>
+
+
+</body>
+</html>

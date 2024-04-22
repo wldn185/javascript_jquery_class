@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라디오버튼을 활용한 탭콘텐츠</title>
+  <style>
+    input[type=radio]{display: none;}
+    input[type=radio]:checked + label{
+      font-weight: bold;
+      color: #00f;
+    }
+    label{cursor: pointer; display: inline-block; padding: 20px;}
+    
+    .tab_con{
+      width: 800px; height: 400px; border:3px solid #333;
+    }
+    .con01, .con02, .con03{height: 370px; display: none;}
+    .con01{background-color: #f00;}
+    .con02{background: #0f0;}
+    .con03{background: #00f;}
+    #tab_01:checked ~ .con01{display: block;}
+    #tab_02:checked ~ .con02{display: block;}
+    #tab_03:checked ~ .con03{display: block;}
+
+  </style>
+</head>
+<body>
+  <h2>라디오버튼을 활용한 탭콘텐츠</h2>
+  <div class="tab_con">
+    <input type="radio" id="tab_01" name="a" checked><label for="tab_01">이태리/남부</label>
+    <input type="radio" id="tab_02" name="a"><label for="tab_02">스페인/그라나다</label>
+    <input type="radio" id="tab_03" name="a"><label for="tab_03">프랑스/몽생미생</label>
+    <div class="con01">콘텐츠 1박스</div>
+    <div class="con02">콘텐츠 2박스</div>
+    <div class="con03">콘텐츠 3박스</div>
+  </div>
+</body>
+</html>

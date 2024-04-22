@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 내장객체_5 실습(복합갤러리)</title>
+  <!-- 폰트어썸 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    *{margin: 0; padding: 0;}
+    ul, li{list-style: none;}
+    #gallery{
+      width: 1000px; height: 1000px; margin: 0 auto;
+      border: 4px solid;
+      position: relative;
+    }
+    #gallery ul{
+      display: flex;
+      flex-wrap: wrap;
+      width: 900px; margin: 0 auto;
+      border: 1px solid blue;
+    }
+    #gallery ul li{width: 12.5%; height: 100px;}
+    #gallery ul li img{width: 100%; height: 100%; object-fit: cover; cursor: pointer;
+    }
+    .big_img_wrap{
+      width: 900px; margin: 0 auto; 
+      border: 1px solid red;
+      padding-top: 50px;
+      position: relative;
+    }
+    #big_img{
+      width: 100%;
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
+    }
+    .btn2{width: 100%;  position: absolute;}
+    .p_btn, .n_btn{border: 1px solid #ccc; padding: 20px 4px; cursor: pointer; font-size: 40px; position: absolute; top: 176px;}
+    .p_btn{left: 0;}
+    .n_btn{right: 0;}
+    .btn2{top: 80px;}
+    .btn2 .p_btn, .btn2 .n_btn{background-color: #ccc;}
+    h2{float: left;} .number{font-size: 20px; font-weight: bold; color: #f00;} .title{clear: both;}
+  </style>
+</head>
+<body>
+  <article id="gallery">
+    <h2>포토</h2>
+    <p class="number"><span class="n">1</span>/17</p>
+    <p class="title">스틸컷 포스터</p>
+    <ul class="lnb">
+      <li><img src="./images/movie_image1.jpg" alt=""></li>
+      <li><img src="./images/movie_image2.jpg" alt=""></li>
+      <li><img src="./images/movie_image3.jpg" alt=""></li>
+      <li><img src="./images/movie_image4.jpg" alt=""></li>
+      <li><img src="./images/movie_image5.jpg" alt=""></li>
+      <li><img src="./images/movie_image6.jpg" alt=""></li>
+      <li><img src="./images/movie_image7.jpg" alt=""></li>
+      <li><img src="./images/movie_image8.jpg" alt=""></li>
+      <li><img src="./images/movie_image9.jpg" alt=""></li>
+      <li><img src="./images/movie_image10.jpg" alt=""></li>
+      <li><img src="./images/movie_image11.jpg" alt=""></li>
+      <li><img src="./images/movie_image12.jpg" alt=""></li>
+      <li><img src="./images/movie_image13.jpg" alt=""></li>
+      <li><img src="./images/movie_image14.jpg" alt=""></li>
+      <li><img src="./images/movie_image15.jpg" alt=""></li>
+      <li><img src="./images/movie_image16.jpg" alt=""></li>
+      <li><img src="./images/movie_image17.jpg" alt=""></li>
+    </ul>
+      <div class="p_btn"><i class="fa-solid fa-angle-left"></i></div>
+      <div class="n_btn"><i class="fa-solid fa-angle-right"></i></div>
+    <div class="big_img_wrap">
+      <img src="./images/movie_image1.jpg" alt="" id="big_img">
+      <div class="btn2">
+        <div class="p_btn"><i class="fa-solid fa-angle-left"></i></div>
+        <div class="n_btn"><i class="fa-solid fa-angle-right"></i></div>
+      </div>
+    </div>
+  </article>
+
+  <script>
+    const b_img = document.getElementById('big_img');
+    let s_img = document.querySelectorAll('.lnb > li > img');
+    let n = document.querySelector('.n');
+
+    for(let i=0; i<s_img.length; i++){
+      s_img[i].addEventListener('click', function(){
+        let img_src = this.src;
+        b_img.src = img_src;
+        for(let j=0;j<s_img.length;j++){
+          console.log(j);
+          s_img[j].style.border='none';
+        }
+        s_img[i].style.border='1px solid #f00';
+        n.innerHTML=i+1;        
+      });
+    }
+    //이전 다음 버튼 누르면 해당 이미지 이동
+    const p_btn = document.querySelectorAll('p_btn');
+    const n_btn = document.querySelectorAll('n_btn');
+  </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제어문_응용하기_5장의 사진을 이용하여 탭콘텐츠 구현하기</title>
+  <style>
+    .tab_con{
+      width: 470px; height: 684px;
+      position: relative;
+    }
+    .tab_con > ul{
+      display: flex;
+      margin: 0; padding: 0;
+    }
+    .tab_con > ul > li{
+      width: 470px;
+      list-style-type: none;
+      
+    }
+    .tab_con > ul > li > a{
+      line-height: 80px;
+      display: block;
+      position: absolute;
+      bottom: 80px;
+    }
+    .tab_con > ul > li > a > img{
+      width: 80px; height: 80px;
+    }
+
+    .tab_con div{
+      position: absolute; /* 맨 마지막번째 5번이 위로 올라오게 됨. */
+      top: 0px; left: 0px;
+      width: 100%; height: 500px;
+      display: none;
+    }
+    li.on div{display:block;}
+  </style>
+</head>
+<body>
+  <h2>제어문_응용하기_5장의 사진을 이용하여 탭콘텐츠 구현하기</h2>
+  <article class="tab_con">
+    <ul>
+      <li class="on">        
+        <a href="#" title="탭1">
+          <img src="./images/photo01.jpg" alt="">
+        </a>
+        <div class="con01">
+          <img src="./images/photo01.jpg" alt="">
+        </div>
+      </li>
+      <li>
+        <a href="#" title="탭2">
+          <img src="./images/photo02.jpg" alt="">
+        </a>
+        <div class="con02">
+          <img src="./images/photo02.jpg" alt="">
+        </div>
+      </li>
+      <li>
+        <a href="#" title="탭3">
+          <img src="./images/photo03.jpg" alt="">
+        </a>
+        <div class="con03">
+          <img src="./images/photo03.jpg" alt="">
+        </div>
+      </li>
+      <li>
+        <a href="#" title="탭4">
+          <img src="./images/photo04.jpg" alt="">
+        </a>
+        <div class="con04">
+          <img src="./images/photo04.jpg" alt="">
+        </div>
+      </li>
+      <li>
+        <a href="#" title="탭5">
+          <img src="./images/photo05.jpg" alt="">
+        </a>
+        <div class="con05">
+          <img src="./images/photo05.jpg" alt="">
+        </div>
+      </li>
+    </ul>
+  </article>
+
+  <script>
+    //1. 탭메뉴 목록 변수
+    const tabList = document.querySelectorAll('.tab_con li');
+
+    //2. 탭메뉴 클릭시 해당 n번째 값 출력해보기
+    for(let i=0;i<tabList.length;i++){ //length는 tabList의 개수 tabList는 .tab_con li다. tabList의 개수는 곧 .tab_con li의 개수
+      tabList[i].querySelector('a').addEventListener('click', function(e){ //
+        // window.alert('click');
+        e.preventDefault(); //새로고침 방지 == a태그의 이벤트를 무력시켜줌
+        for(let j=0;j<tabList.length;j++){ //li태그 개수만큼 on서식을 제거
+          tabList[j].classList.remove('on');
+        }
+        this.parentNode.classList.add('on'); //선택한 a요소의 부모인 li태그에 on클래스 적용함.
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 배열, 날짜 객체 실습(오늘의 요리는)</title>
+  <style>
+    #food_box{width: 90%; border: 3px solid; margin: 0 auto; text-align: center; padding: 3% 0;}
+  </style>
+</head>
+<body>
+  <div id="food_box">
+    <div id="food_day"></div>
+    <img src="" alt="음식" id="food_img">
+  </div>
+
+  <script>  
+    let today = new Date();
+    let yoil = ['일', '월', '화', '수', '목', '금', '토'];
+
+    document.getElementById('food_day').innerHTML='<h3>오늘 (' + yoil[today.getDay()] + ')요일의 추천요리는</h3>';
+    document.getElementById('food_img').src='./food/food' + today.getDay() + '.jpg';
+  </script>
+</body>
+</html>

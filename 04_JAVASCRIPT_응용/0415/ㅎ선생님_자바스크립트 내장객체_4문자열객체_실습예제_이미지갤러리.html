@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 내장객체_4문자열객체_실습예제</title>
+  <style>
+    #gallery{width:500px;height:380px;border:4px solid #000;}
+    #gallery > h3{display:none;}
+    #gallery *{margin:0px; padding:0px;}
+    #gallery ul, #gallery li{list-style:none;height:50px;overflow:hidden;}
+    #gallery ul{display:flex;}
+    #gallery ul li{width:20%;height:50px;}
+    #gallery ul li:hover img{filter: brightness(1.1);cursor:pointer;}
+    #gallery img{width:100%;}
+
+    #big_img{height:330px;}
+  </style>
+</head>
+<body>
+  <h2>자바스크립트 내장객체_4문자열객체_실습예제-탭메뉴 이미지 갤러리</h2>
+  <p>문자열 객체를 활용하여 탭메뉴 5개를 클릭시 해당 문자열값을 변수에 담아 큰이미지가 변경될 수 있도록 src주소값을 변경한다.</p>
+  <ol>
+    <li>독립적인 콘텐츠를 만들기 위한 article태그를 사용하여 박스를 만든다.</li>
+    <li>썸네일 이미지 메뉴를 만들기 위한 ul, li태그를 작성한다.</li>
+    <li>큰사진이 보이도록 div태그를 작성한다.</li>
+    <li>script 문자열 객체를 통해 썸네일 이미지 클릭시 해당 src값을 변수에 담아 큰사진의 src속성값에 대입하여 이미지가 변경되도록 한다.</li>
+  </ol>
+
+  <article id="gallery">
+    <h3>이미지 갤러리</h3>
+    <ul class="lnb">
+      <li><img src="./images/img01.png" alt=""></li>
+      <li><img src="./images/img02.png" alt=""></li>
+      <li><img src="./images/img03.png" alt=""></li>
+      <li><img src="./images/img04.png" alt=""></li>
+      <li><img src="./images/img05.png" alt=""></li>
+    </ul>
+    <img src="./images/img01.png" alt="" id="big_img">
+  </article>
+
+  <script>
+    // 1. 변수선언
+    // 큰사진 변수
+    const big_img = document.getElementById('big_img');
+
+    // 작은사진 변수
+    let s_img = document.querySelectorAll('.lnb > li > img');
+
+    //작은사진 클릭하면 해당이미지의 src주소값을 변수에 담는다.
+    for(let i=0;i<s_img.length;i++){ //이미지 개수만큼 반복한다.
+      s_img[i].addEventListener('mouseenter', function(){
+        let img_src = this.src;
+        console.log(img_src); //이미지 속성값 테스트하기
+
+        //src변수에 있는 값을 big_img의 src속성값에 대입한다.
+        big_img.src=img_src;
+
+      });
+    }
+  </script>
+</body>
+</html>

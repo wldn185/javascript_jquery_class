@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배스킨라빈스 메인페이지-2단 내비게이션, 이미지 슬라이드</title>
+  <!-- css초기화 -->
+  <link rel="stylesheet" href="./css/reset.css" type="text/css">
+  <!-- common 서식 -->
+  <link rel="stylesheet" href="./css/common.css" type="text/css">
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header>
+    <div class="h_top">
+      <h1><a href="index.html" title="메인페이지 바로가기"><img src="./images/logo_baskinrobbins.png" alt="상단로고"></a></h1>
+    </div>
+    <div class="h_bottom">
+      <nav>
+        <!-- login, join -->
+        <ul class="lnb">
+          <li><a href="login.html" title="로그인">login</a></li>
+          <li><a href="join.html" title="회원가입">join</a></li>
+        </ul>
+        <!-- main navigation -->
+        <ul class="gnb">
+          <li><a href="#" title="이달의 제품">flavor of the month</a>
+            <ul class="sub">
+              <li><a href="#" title="아이스크림">
+                <img src="./images/img_monthly_fom_220930.png" alt=""></a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#" title="메뉴">menu</a>
+            <ul class="sub">
+              <li><a href="#" title="아이스크림">아이스크림</a></li>
+              <li><a href="#" title="아이스크림케이크">아이스크림케이크</a></li>
+              <li><a href="#" title="음료">음료</a></li>
+              <li><a href="#" title="커피">커피</a></li>
+              <li><a href="#" title="디저트">디저트</a></li>
+            </ul>
+          </li>
+          <li><a href="#" title="영양성분">영양 성분 및 알레르기</a>
+            <ul class="sub">
+              <li><a href="#" title="아이스크림">아이스크림</a></li>
+              <li><a href="#" title="음료">음료</a></li>
+              <li><a href="#" title="커피">커피</a></li>
+            </ul>
+          </li>
+          <li><a href="#" title="이벤트">event</a>
+            <ul class="sub">
+              <li><a href="#" title="진행중인 이벤트">진행중인 이벤트</a></li>
+              <li><a href="#" title="당첨자 발표">당첨자 발표</a></li>
+            </ul>
+          </li>
+          <li><a href="#" title="스토어">store</a>
+            <ul class="sub">
+              <li><a href="#" title="매장찾기">매장찾기</a></li>
+              <li><a href="#" title="고객센터">고객센터</a></li>
+              <li><a href="#" title="단체주문">단체주문</a></li>
+            </ul>
+          </li>
+          <li><a href="#" title="소개">about</a>
+            <ul class="sub">
+              <li><a href="#" title="공지사항">공지사항</a></li>
+              <li><a href="#" title="보도자료">보도자료</a></li>
+              <li><a href="#" title="채용정보">채용정보</a></li>
+              <li><a href="#" title="점포개설문의">점포개설문의</a></li>
+              <li><a href="#" title="contact us">contact us</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인영역 -->
+  <main></main>
+
+  <!-- 푸터영역 -->
+  <footer>
+    <address>Copyright&copy;2023 BRKOREA Company. All Rights Reserved.</address>
+  </footer>
+
+  <!--  2단 내비게이션 구현하기 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    // 방법1. 자바스크립트로 2단메뉴 구현하기
+    // 1. 변수선언
+    const gnb = document.querySelector('.h_bottom .gnb');
+    const h_bottom = document.querySelector('.h_bottom');
+    
+/*
+    // 2. gnb에 마우스 오버시 높이가 변하면서 서브가 보이게
+    gnb.addEventListener('mouseenter', function(){
+      h_bottom.style.height='325px';
+      // this.style.height='325px'; 이걸 쓰려면 .gnb에 높이값 46 설정해놓고 해야함. 
+    });
+
+    // 3. 마우스 아웃시 높이가 원래대로고 46크기로 작아져야 
+    gnb.addEventListener('mouseleave', function(){
+      h_bottom.style.height='46px';
+      // this.style.height='46px'; 이걸 쓰려면 .gnb에 높이값 46 설정해놓고 해야함. 
+    });
+*/
+    // 방법2. 제이쿼리로 2단 메뉴 구현하기
+    $(document).ready(function(){
+      $(gnb).hover(function(){ //마우스 오버시
+        $(h_bottom).stop().animate({'height':'325px'}, 200);
+      }, function(){ //마우스 아웃시
+        $(h_bottom).stop().animate({'height':'46px'}, 200);
+      });
+    }); //.stop()을 써준 이유: 마우스 오버를 너무 많이 하면 그 수를 다 기억하기 때문에 마우스를 완전히 빼도 동작하게 된다. 그래서 .stop()메서드를 써줘서 그 현상을 막는다.
+  </script>
+</body>
+</html>

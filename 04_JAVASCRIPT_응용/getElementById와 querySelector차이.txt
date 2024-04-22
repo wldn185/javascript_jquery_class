@@ -1,0 +1,15 @@
+자바스크립트 선택자
+1. 태그명으로 선택하기 : document.getElementByTagName('태그명'); => 유사배열로 반환(html collection)
+2. 아이디명으로 선택하기 : document.getElementById('아이디명'); => 단일값으로 반환
+3. 클래스명으로 선택하기 : document.getElementByClassName('클래스명'); => 유사배열로 반환(html collection)
+4. css선택자로 선택하기 : 
+document.querySelector('header #logo'); => 단일값으로 반환
+document.querySelectorAll('nav a'); => 유사배열로 반환(NodeList)
+---------------------------------
+getElementById()는 무엇인가?
+id를 통해 엘리먼트를 반환한다. 만약 document에 구체적인 ID의 엘리먼트가 없다면 null을 반환한다.
+
+querySelector()는 무엇인가?
+selector의 구체적인 그룹과 일치하는 document안 첫번째 엘리먼트를 반환한다. 일치하는게 없으면 null반환한다.
+
+querySelectorAll() : document안에 있는 앨리먼트 모두 반환

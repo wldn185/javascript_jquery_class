@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 실습_함수를 활용하여 비만도 지수구하기</title>
+  <style>
+    .orange{background-color: orange;}
+    .green{background-color: green;}
+    .blue{background-color: blue;}
+    .yellow{background-color: yellow;}
+    .red{background-color: red;}
+  </style>
+</head>
+<body>
+  <h2>자바스크립트 실습_함수를 활용하여 비만도 지수구하기</h2>
+  <p>자신의 키(신장), 몸무게(체중)을 입력하여 적정체중 구하기</p>
+  <ul>
+    <li>신장을 입력하기 위한 input박스와 체중을 입력하기 위한 input 사용</li>
+    <li>함수에 신장, 체중값을 사용하여 계산식 작성하기</li>
+    <li>연산결과에 따른 값이 적정체중인지를 비교하여 결과를 출력한다.</li>
+  </ul>
+  <p>BMI 지수 = 몸무게(kg) 나누기 (신장(m) & 신장(m))</p>
+  <p>BMI 지수가 18.5 이하면 저체중, 18.5~23은 정상, 23~25는 과체중, 25~30은 비만, 30~35는 고도비만</p>
+  <p>저체중은 배경: 주황색, 정상: 녹색, 과체중:파랑, 비만:노랑, 고도비만:빨강 배경으로 서식적용</p>
+  <fieldset>
+    <legend>BMI지수 구하기</legend>
+    <label for="height">신장 : </label><input type="text" id="height"> 예) 170 = 1.7<br>
+    <label for="weight">몸무게 :</label><input type="text" id="weight"> 예) 50 = 50kg<br>
+    <input type="button" id="btn" value="결과확인">
+  </fieldset>
+
+  <div id="result">출력결과는 이곳에 출력됩니다.</div>
+
+  <script>
+    //1.변수선언
+    let height, weight;
+
+    //2. 버튼 클릭시 해딩값 출력하기
+    document.getElementById('btn').addEventListener('click', function(){
+      height = document.getElementById('height').value; //입력된 값을 변수에 저장
+      weight = document.getElementById('weight').value; //입력된 값을 변수에 저장
+
+      //값 출력하기
+      console.log(height);
+      console.log(weight);
+
+      //제어문 if, switch, case, 반복문(while, do while, for)
+      let bmi = parseInt(Number(weight)/(Number(height)*Number(height))); //parsInt는 정수로 만들어줌
+      if(bmi<=18.5){
+        document.getElementById('result').innerHTML='<p class="yellow">저체중입니다.</p>';
+      }else if((bmi>18.5)&&(bmi<=23)){
+        document.getElementById('result').innerHTML='<p class="green">정상체중입니다.</p>';
+      }else if((bmi>23)&&(bmi<=25)){
+        document.getElementById('result').innerHTML='<p class="blue">과체중입니다.</p>';
+      }else if((bmi>25)&&(bmi<=30)){
+        document.getElementById('result').innerHTML='<p class="purple">비만입니다.</p>';
+      }else{
+        document.getElementById('result').innerHTML='<p class="red">고도비만입니다.</p>';
+      }
+    });
+  </script>
+</body>
+</html>

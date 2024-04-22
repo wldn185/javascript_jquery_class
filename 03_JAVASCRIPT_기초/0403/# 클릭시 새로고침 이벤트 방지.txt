@@ -1,0 +1,6 @@
+새로고침 방지
+
+1. e.preventDefault(); //이벤트 무력화 객체사용
+2. a href="#none"     #뒤에 아무 이름이나 작성 해서 id값을 찾지 못하게
+3. a href="javascript:void(0)" 
+4. a href="javascript:"

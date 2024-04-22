@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02변수에 저장할 수 있는 데이터유형</title>
+  <script>
+    //1. 원시형 데이터
+    let n = '10';  //문자데이터 10을 변수에 담는다.
+    let n1 = 10;   //숫자데이터
+    let b = true; //부울형 데이터(참,거짓)
+    let n2;       //값을 정의하지 않음
+    let n3 = null; //값이 없다.
+
+    //2. 참조형 데이터 - 여러개의 데이터를 저장(배열)하거나 사용자가 요청시 실행되는 함수형 데이터가 있음.
+    //배열선언   let 배열이름 = ['값0', '값1', '값2', '값3'.....];
+    let fruit = ['사과','배','귤','감','수박','바나나','딸기','참외','포도'];
+    let yoil = ['일','월','화','수','목','금','토'];
+    let info = ['master','1234','02-1234-5678','서울시 종로구 구기동','남','학생'];
+
+    //참조형 데이터 출력하기
+    document.write(fruit+'<br>');
+    document.write(fruit[0]+'<br>');//사과
+    document.write(fruit[8]+'<br>');//포도
+
+    document.write(yoil+'<br>');
+    document.write('오늘은 즐거운 ('+ yoil[5]+ ') 요일입니다.<br>');
+
+    //날짜객체 Date()
+    let today = new Date();
+    document.write(today+'<br>'); //지금 현재 시스템 날짜,시간을 모두 출력
+    document.write(today.getFullYear()+'<br>');//년도
+    document.write(today.getMonth()+1+'<br>');//월(0-11)
+    document.write(today.getDate()+'<br>');//일
+    document.write(today.getDay()+'<br>');//요일번호(0-6)
+
+    let m = today.getMonth()+1; //3
+    let d = today.getDate(); //29
+
+    //현재날짜와 요일출력
+    document.write(m + '.' + d + '(' + yoil[today.getDay()] + ')<br>');
+
+
+    //문장출력하기
+    //회원님의 아이디는 'master'이고 패스워드는 '1234'입니다. 아이디 글자색 '파랑, 굵게', 패스워드 '빨강', '밑줄'로 표시
+    document.write('회원님의 아이디는 <span class="txt01">' + info[0] + '</span> 이고 패스워드는 <span class="txt02">'+info[1]+'</span>입니다.<br>');
+
+    document.write(`회원님의 아이디는 <span class="txt01"> ${info[0]} </span> 이고 패스워드는 <span class="txt02"> ${info[1]} </span>입니다.<br>`);
+
+
+    //변수 데이터값 출력하기
+    document.write(n+'<br>');
+    document.write(n1+'<br>');
+    document.write(typeof(n1)+'<br>'); //데이터 유형을 알려줌
+    document.write(b+'<br>');
+    document.write(n2+'<br>');
+    document.write(n3+'<br>');
+
+  </script>
+</head>
+<body>
+  <h2>02변수에 저장할 수 있는 데이터유형</h2>
+  <ul>
+    <li>문자데이터(string)</li>
+    <li>숫자데이터(number)</li>
+    <li>부울형(boolean) 데이터 - true, false</li>
+    <li>찾을 수 없는 데이터(undefined)</li>
+    <li>값이 없는 데이터(null)</li>
+    <li>배열형 데이터(array)</li>
+    <li>함수형 데이터(function)</li>
+    <li>객체(object) - document, window, alert, prompt.........</li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+*{margin: 0; padding: 0;}
+ul, li, ol{list-style: none;}
+
+.button{
+  padding: 5px 7px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+}
+.box_photo{
+  width: 668px;
+  margin: auto;
+  padding-top: 10px;
+  color: #343434;
+  border: 3px solid #000;
+  position: relative;
+}
+.title_area, .sub_area{
+  width: 100%;
+  height: 27px;
+  display: inline-flex;
+  align-items: center;
+}
+.user_btn{
+  margin-left: auto;
+}
+.sub_area > ul{
+  width: 100%; height: 27px;
+  display: inline-flex;
+  align-items: center;
+}
+.sub_area > ul > li{
+  padding-right: 9px;
+  font-size: small; font-weight: lighter;
+}
+
+/* 썸네일 이미지 */
+.list-area{
+  width: 100%; height: 74px;
+  display: inline-flex;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.list-area i{
+  padding: 24px 10px;
+  font-size: 25px; color: #7a7979;
+}
+.list-area i:hover{cursor: pointer;}
+.list_photo{width: 100%;}
+.list_photo > li{
+  width: calc(100%/8);
+  height: 74px;
+  float: left;
+  position: relative;
+  box-sizing: border-box;
+}
+.list_photo > li img{
+  width: 100%; height: 100%;
+  box-sizing: border-box;
+  object-fit: cover;
+}
+.list_photo > li:first-child{
+  border: 3px solid #f00;
+}
+.list_photo > li:hover{
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 3px solid #f00;
+}
+
+/* 큰사진 박스 */
+.main_photo{
+  width: 100%; height: 443px;
+  display: flex; justify-content: center;
+  margin-top: 150px;
+  position: relative;
+}
+.main_photo img{
+  width: 100%; object-fit: contain;
+}
+.arrow .fas{
+  color: rgba(255,255,255,0.9);
+  background-color: rgba(0,0,0,.7);
+  position: absolute;
+  top: 44%; z-index: 10;
+  width: 40px; height: 50px;
+  line-height: normal;
+  margin: -40px 0 0;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 30px;
+  padding-top:20px;
+  text-align: center;
+}
+.arrow i.fa-angle-left{left:0;}
+.arrow i.fa-angle-right{right:0;}
+#photo_title{
+  color: #fff; font-size: 14px;
+  position: absolute;
+  top: 18px; left: 50px;
+  color: #f00;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16자바스크립트 내장객체_3 Date객체</title>
+  <style>
+    #clock{
+      color: #00f;
+      background-color: #ff0;
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h3>16자바스크립트 내장객체_3 Date객체 - 날짜, 시간</h3>
+  <p>Date객체는 현재 또는 특정 날짜와 시간에 대한 정보를 제공하는 객체이다.</p>
+  <p>웹페이지의 증권, 은행, 뉴스페이지 등에 오늘의 날짜와 시간을 표시, 게시판</p>
+  <p>작성법) let 변수명 = new Date();</p>
+
+  <h3>날짜와 시간정보를 제공하는 Date객체 속성들</h3>
+  <p>getFullyear() : 날짜 정보에서 연도에 대한 정보를 제공</p>
+  <p>getMonth() : 날짜정보에서 월(0-11)에 대한 정보를 제공 (출력시 : 월+1을 더함)</p>
+  <p>getDate() : 날짜정보에서 일에 대한 정보를 제공</p>
+  <p>getDay() : 날짜정보에서 요일에 대한 정보를 숫자로 제공(0-일, 1-월, 2-화, 3-수, 4-목, 5-금, 6-토</p>
+  <p>getHours() : 날짜정보에서 시간(0-23)에 대한 정보를 제공</p>
+  <p>getMinutes() : 날짜정보에서 분에 대한 정보를 제공</p>
+  <p>getSecond() : 날짜정보에서 초(0-59)에 대한 정보를 제공</p>
+  <p>getMilliseconds() : 날짜정보에서 밀리초(1/1000)에 대한 정보를 제공</p>
+
+  <h3>실시간 디지털 시계표시하기 - 글자색(파랑), 크기(30px), 배경(노랑)</h3>
+  <div id="clock"></div>
+  <hr>
+  
+  <script>
+
+    //날짜 객체 생성하기
+    let today = new Date();
+
+    //날짜객체와 메서드로 정보출력하기
+    document.write(today+"<br>"); //오늘의 모든 시간 정보가 출력된다
+    document.write(today.getFullYear()+"<br>"); //년도
+    document.write(today.getMonth()+1+"월<br>"); //월 (1월을 0부터 세기 때문에 4월일 경우 3이 출력된다. 그래서 1을 더해야 맞는 월이 나온다.)
+    document.write(today.getDate()+"<br>"); //일
+    document.write(today.getDay()+"<br>"); //요일 (일요일을 0부터 세기 때문에 월요일은 1로 출력된다. 한글로 나오게 하려면 배열객체를 이용하여 출력한다.)
+    //배열객체
+    let yoil = ['일', '월', '화', '수', '목', '금', '토'];
+    document.write(yoil[today.getDay()]+'<br>'); //getDay에 나온 숫자를 배열로 나오게 출력
+
+    document.write(today.getHours()+"시<br>"); //시
+    document.write(today.getMinutes()+"분<br>"); //분
+    document.write(today.getSeconds()+"초<br>"); //초
+    document.write(today.getMilliseconds()+"밀리초<br>"); //밀리초(1/1000)
+
+    // 실시간 디지털 시계
+    //실시간으로 움직이는 숫자를 표현하려면 함수가 필요하다
+    function clock(){
+      let today2 = new Date(); //함수안에서 사용할 날짜
+      let h = today2.getHours(); //시
+      let m = today2.getMinutes(); //분
+      let s = today2.getSeconds(); //초
+
+      //시, 분, 초 압에 '0'문자열 붙이기
+      h = checkTime(h);
+      m = checkTime(m);
+      s = checkTime(s);
+
+      //출력
+      document.getElementById('clock').innerHTML=`<p>${h} : ${m} : ${s}</p>`; 
+      let t = setTimeout(clock,500); //시간객체를 통해 지정한 함수를 시간마다 호출하여 반복실행한다. 1초=1000 , setTimeout은 시간객체로 내가 지정한 함수(clock)를 지정한 시간(0.5s)마다 반복실행하는 함수
+    }
+    function checkTime(a){ //시, 분, 초값을 받아와서
+      if(a < 10){ //만약에 시, 분, 초값이 10보다 작을 경우
+        a = '0' + a; //기존값에 '0' 문자열값을 붙이고
+      }
+      return a; //그렇지않은 경우 그냥 출력하도록 함.
+    }
+
+    //함수를 호출해야 출력이 된다.
+    clock();
+
+  </script>
+</body>
+</html>

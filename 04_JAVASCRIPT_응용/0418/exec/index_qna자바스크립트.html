@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스타벅스 메인페이지</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    ul,li{list-style: none;}
+    a{color: #333;}
+    header{
+      height: 100px;
+      background-color: #ccc;
+    }
+    .main_banner{
+      width: 100%; height: 646px;
+      background: url(./images/bev_bg.jpg) 100%;
+    }
+    footer{
+      height: 80px;
+      background-color: #ccc;
+    }
+    /* 메인비주얼 */
+    .main_inner{
+      width: 1200px; height: 646px;
+      margin: 0 auto;
+      border: 1px solid red;
+      position: relative;
+    }
+    .main_inner > img{position: absolute;}
+    .main_inner > img:nth-child(1){top: 50px; right: 330px;}
+    .main_inner > img:nth-child(2){top: 48px; right: 151px;}
+    .main_inner > img:nth-child(3){top: 210px; right: 450px;}
+    .main_inner > img:nth-child(4){top: 208px; right: 183px;}
+    .main_inner > img:nth-child(5){top: 158px; right: 7px;}
+    .main_inner > img:nth-child(6){top: 253px; right: -55px;}
+
+    /* 질문과 답변 서식 */
+    .qna{
+      width: 1100px; margin: 0 auto;
+    }
+    .qna h2{
+      font-size: 30px; 
+      line-height: 40px; 
+      margin-bottom: 30px;
+    }
+    .qna > p {line-height: 40px;}
+    .qna form{
+      background-color: #f4f4f2;
+      text-align: right;
+      line-height: 60px;
+    }
+    .qna form input[type=search]{
+      border-style: none;
+      border: 1px solid #ccc;
+      height: 30px; width: 300px;
+    }
+    .qna form label{
+      background-color: #4d4d4d; color: #fff;
+      padding: 5px 10px; 
+      margin: 0px 10px;
+      border-radius: 3px;
+    }
+    .qna dl{
+      margin-top: 30px;
+      padding-top: 10px;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+    .qna dt{
+      line-height: 60px; color: #006633;
+      border-bottom: 1px solid #ccc;
+    }
+    .qna dt::before{
+      content: "Q ";
+    }
+    .qna dd{
+      background-color: #f4f4f2;
+      padding: 26px 10px;
+      display: none;
+    }
+    .qna dd:first-of-type{display: block;}
+    .qna dd::before{
+      content: "A ";
+      font-weight: bold;
+    }
+    .qna i.fas{
+      float: right;
+      font-size: 26px;
+      color: #222;
+      padding: 15px 20px 0px 20px;
+    }
+    .act{
+      transform:rotate(180deg) translateY(-10px) !important;
+    }
+  </style>
+  <!-- 폰트어썸 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      
+      //일단 메인이미지 숨기고 서서히 나오게 하기
+      $('.main_banner img').hide();
+
+      //1. 메인이미지 커피, 타이틀 이미지 변수
+      const c1_title = $('.main_banner img').eq(0);
+      const c1_img = $('.main_banner img').eq(1);
+      const c2_title = $('.main_banner img').eq(2);
+      const c2_img = $('.main_banner img').eq(3);
+      const c3_title = $('.main_banner img').eq(4);
+      const c3_img = $('.main_banner img').eq(5);
+
+      c1_title.fadeIn();
+      c1_img.fadeIn();
+
+      //딜레이를 줘서 나오게 하기
+      c2_title.delay(500).fadeIn();
+      c2_img.delay(500).fadeIn();
+
+      c3_title.delay(1000).fadeIn();
+      c3_img.delay(1000).fadeIn();
+
+    });
+  </script>
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header>
+    <h1>
+      <a href="index.html" title="메인페이지 바로가기">
+        <img src="./images/logo.png" alt="상단로고">
+      </a>
+    </h1>
+  </header>
+
+  <!-- 메인영역 -->
+  <main>
+    <section class="main_banner">
+      <div class="main_inner">
+        <img src="./images/bev1_txt.png" alt="">
+        <img src="./images/bev1_cup.png" alt="">
+        <img src="./images/bev2_txt.png" alt="">
+        <img src="./images/bev2_cup.png" alt="">
+        <img src="./images/bev3_txt.png" alt="">
+        <img src="./images/bev3_cup.png" alt="">
+      </div>
+    </section>
+
+    <section class="qna">
+      <h2>자주하는 질문</h2>
+      <p>e-GIFT Card에 대한 궁금점이 많으신가요? 고객님의 문의사항에 대한 답변을 빠르게 찾으실 수 있습니다.</p>
+      <form name="검색폼" method="post" action="search.php"> <!--action 서버에 데이터를 보낼 페이지를 써줌. 받은 페이지는 데이터베이스에 넘기고 데이터베이스는 정보를 찾고 출력-->
+        <p class="searchbox"><input type="search" id="search"><label for="search">검색</label></p>        
+      </form>
+      <dl>
+        <dt>[온라인 스토어] 보낸 선물함이 사라졌는데, 과거에 선물한 이력은 어떻게 확인할 수 있나요?<i class="fas fa-angle-down act"></i></dt>
+        <dd>Gift배송하기 서비스에서 ‘배송지 입력’을 기준으로 주문내역이 노출되었던 것과는 달리, 온라인 스토어 서비스에서는 ‘결제’를 기준으로 주문내역이 노출됩니다. 따라서, 과거에 보내신 선물의 경우 스타벅스 앱 [Shop > 쇼핑하러 가기 > 마이페이지 > 주문내역]에서 확인하실 수 있습니다.
+          아울러, 스타벅스 온라인 스토어의 [선물함]에는 다른 사람으로부터 선물 받은 내역만 노출됩니다.
+          
+          - 주문내역: 결제한 주문 내역 (구매하기/선물하기)
+          - 선물함: 선물 받은 내역 (선물받기)</dd>
+        <dt>[온라인 스토어] 스타벅스 온라인 스토어에 들어가니 e-Gift Item과 e-Gift Card도 있는데, 결제 수단과 별 적립 기준이 모두 동일한가요?<i class="fas fa-angle-down"></i></dt>
+        <dd>스타벅스 온라인 스토어에서는 스타벅스의 상품을 온라인에서 구매할 수 있는 온라인 스토어 서비스, 스타벅스의 물품형 상품권을 선물할 수 있는 e-Gift item 서비스, 스타벅스의 금액형 상품권을 판매하는 e-Gift Card 서비스 총 3가지 서비스를 제공하며, 각 서비스의 결제수단과 별 적립 기준은 상이합니다. 각 서비스의 결제수단과 별 적립 기준은 서비스별 고지사항을 참조해 주세요.</dd>
+        <dt>[e-Gift Card_발신] 최대 얼마까지 구매할 수 있나요?<i class="fas fa-angle-down"></i></dt>
+        <dd>e-Gift Card의 계정당 일 최대 구매 가능 금액은 아래와 같습니다.
+          - 신용카드: 50만 원
+          - SSGPAY: 50만 원
+          
+          각 카드사의 상품권 한도 및 정책은 상이할 수 있습니다. e-Gift Card 결제수단별 월 구매 한도가 초과된 경우, 익일이용하시거나 ‘단체 및 기업 구매’를 통해 이용하시기 바랍니다.</dd>
+        <dt>[단체 및 기업구매] e-Gift card MMS 발송 결과는 어떻게 확인하나요?<i class="fas fa-angle-down"></i></dt>
+        <dd>발송희망일 오후 5시에 신청자정보 상의 이메일로 발송결과 자동 메일이 발송됩니다.
+          단체 및 기업구매 e-Gift card는 개인 선물하기와 달리 통신사에서 최대 4일간 반복해서 발송을 시도합니다.
+          최종결과가 도출되고 발송 결과 상 실패가 있을 경우, 별도 안내 메일을 발송합니다.
+          단체 및 기업구매 > e-Gift card > 구매내역조회에서 발송 실패 건수를 확인하실 수 있으니 참고해주시고, 관련하여 문의가 있을 경우 담당자에게 구매번호 기재해서 메일 보내주시면 확인 후 회신 드립니다.
+          
+          단체 및 기업구매 담당자 : starbucksb2b@starbucks.co.kr</dd>
+        <dt>[단체 및 기업구매] e-Gift card를 대량구매 하고 싶은데 어떻게 해야하나요?<i class="fas fa-angle-down"></i></dt>
+        <dd>단체 및 기업구매 e-Gift card는 개인 선물하기 e-Gift card 와 달리 운영됩니다.
+          e-Gift 매뉴얼을 확인하시면 구매조건과 유의사항, 구매방법 등이 상세히 안내되어 있습니다.
+          관련하여 추가 문의는 메일로 보내주시면 담당자가 확인 후 답변 드리겠습니다.
+          
+          e-Gift 매뉴얼 : http://www.starbucks.co.kr/upload/b2b/co_manual.pdf
+          단체 및 기업구매 담당자 : starbucksb2b@starbucks.co.kr</dd>
+        <dt>[온라인 스토어] 구매당시에는 유효기간이 만료되지 않았던 상품권인데, 반품/취소 시점에 유효기간이 종료되었습니다. 어떻게 환불되나요?<i class="fas fa-angle-down"></i></dt>
+        <dd>제휴사 모바일 상품권 및 e-Gift Item을 사용한 경우, 당일 취소 시 모바일상품권을 원상복구해드립니다. 다만, 결제일 익일 이후 결제를 취소 또는 반품 시 해당 상품권의 유효기간이 경과되어 있을 수 있어, 이를 방지하고자 유효기간이 14일 이내로 남은 제휴사모바일상품권 및 e-Gift Item의 사용을 제한하고 있습니다. 아울러, 모바일상품권을 사용한 주문에 대한 반품 요청 시, 모바일상품권의 유효기간이 만료된 상태로 환불될 수 있다는 지점을 사전 고지하고 있습니다.
+          그럼에도 불구하고, 구매자의 사유로 주문 익일 이후 취소/반품 시, 결제에 사용된 모바일상품권은 유효기간 경과 여부와 무관하게 사용 취소 처리되며, 여러 개의 모바일 상품권이 사용된 경우 유효기간이 긴 순 > 사용 금액이 적은 순 > 사용 순서의 역 순에 따라 모바일상품권을 사용 취소합니다. 모바일 상품권 사용 금액과 환불 금액이 상이하여 모바일 상품권의 부분 사용 및 부분 취소가 필요한 경우, 해당 모바일상품권은 사용 처리 후 부분 환불이 필요한 금액만큼을 스타벅스 카드에 충전하여 환불합니다. 다만, 판매자의 사유로 익일 이후 주문 취소 및 반품 시에는 모바일상품권 환불금액 전액을 스타벅스에서 사용 가능한 스타벅스 카드에 충전하여 환불합니다.
+          스타벅스 카드에 환불금액을 충전하여 환불할 시, 기존 스타벅스리워드회원의 경우 선물 구매 계정에 환불액이 충전된 스타벅스카드가 자동으로 등록되며, 스타벅스리워드 회원이 아닌 홈페이지 회원의 경우, 개인정보에 기재되어 있는 휴대폰번호 또는 별도로 입력한 휴대폰번호로 충전된 스타벅스카드의 정보를 발송드리니, 앱에 등록하여 사용 부탁드립니다.</dd>
+        <dt>[온라인 스토어] 스타벅스 온라인 스토어의 배송상품을 교환하고 싶어요.<i class="fas fa-angle-down"></i></dt>
+        <dd>상품을 직접 구매한 경우 변심으로 인한 상품 교환 및 상품 불량으로 인한 교환이 모두 가능하지만, 타인으로부터 받은 선물은 상품 불량시에만 교환 가능합니다. 다만, 선물 받으신 상품을 수령하실 배송지 입력 이전에는 상품의 옵션을 변경할 수 있으며, 선물 수령 이후 상품 불량으로 교환 시 동일 옵션의 상품으로만 교환 가능합니다.
+          배송완료 후 7일 이내라면 APP의 선물함에서 직접교환신청이 가능하며, 7일 이후에는 고객센터로 문의해주시길 바랍니다. 또한 선물을 받으실 때 배송지를 APP이 아닌 WEB브라우저에서 입력하여 비회원으로 수신하셨다면 교환신청은 구매자를 통해 신청 가능하니 구매자에게 문의하여 교환신청해 주세요.</dd>
+        <dt>[단체 및 기업구매] e-Gift card 전체 또는 부분 환불하고 싶습니다.<i class="fas fa-angle-down"></i></dt>
+        <dd>전체 또는 부분환불은 결제일로부터 14일까지 가능합니다.
+          단, 발송된 e-Gift card의 금액이 정상적으로 충전취소 된 내역에 대해서만 환불이 가능합니다.
+          구매번호와 환불하고자 하는 내역 기재해서 메일 보내주시면 담당자가 답변 드리겠습니다.
+          
+          단체 및 기업구매 담당자 : starbucksb2b@starbucks.co.kr
+          운영시간 : 월~금 09:00 ~ 16:00
+          (11:30 ~ 12:30 제외, 토/일요일, 공휴일 휴무, 매월 둘째주 금요일)</dd>
+        <dt>[단체 및 기업구매] e-Gift card를 이메일로 발송할 수 있나요?<i class="fas fa-angle-down"></i></dt>
+        <dd>단체 및 기업구매 e-Gift card는 MMS로만 발송이 가능합니다. 그에 따라 휴대전화 MMS 이외에 이메일이나 SNS 등으로 발송하는 서비스는 운영하지 않는 점 양지 바랍니다.
+
+          만약, e-Gift card 대량으로 구매할 경우, 구매자께서 직접 별도의 시스템을 이용하여 JPG파일을 첨부할 수 있다면 이메일이나 SNS로도 선물하실 수 있는 점 참고해주세요.
+          
+          e-Gift 매뉴얼 : http://www.starbucks.co.kr/upload/b2b/co_manual.pdf
+          단체 및 기업구매 담당자 : starbucksb2b@starbucks.co.kr</dd>
+        <dt>[단체 및 기업구매] e-Gift card를 개인 정보가 아닌 회사명과 대표번호 등으로 변경해서 각 수신자에게 선물하고 싶은데 어떻게 해야하나요?<i class="fas fa-angle-down"></i></dt>
+        <dd>단체 및 기업구매 e-Gift card MMS로 구매신청하시면 발송처와 발신번호를 변경하여 e-Gift card를 선물하실 수 있습니다.
+          e-Gift 매뉴얼 중 MMS 부분 확인하시기 바랍니다.
+          단체 및 기업구매 e-Gift card MMS는 발송 시간 예약은 불가하고, 항상 발송희망일 오전 10시에 발송됩니다.
+          
+          e-Gift 매뉴얼 : http://www.starbucks.co.kr/upload/b2b/co_manual.pdf
+          단체 및 기업구매 담당자 : starbucksb2b@starbucks.co.kr</dd>
+      </dl>
+    </section>
+  </main>
+
+  <!-- 푸터영역 -->
+  <footer></footer>
+
+  <script>
+    //자바스크립트로 구현하기
+    //1. 변수선언
+    let q = document.querySelectorAll('.qna dt');
+    // let arrow = document.querySelectorAll('i.fas');
+    // let n = 0;
+
+    //dt가 10개 있으니 반복문을 써야함
+    q. forEach((el) => {
+      el.addEventListener('click',function(){ //화살표함수 안됨.
+        
+        // alert('클릭');
+
+        if(el.nextElementSibling.style.display=='none'){//만약 답변이 숨겨진 상태라면
+          el.nextElementSibling.style.display='block'; //답변이 나오게 하고
+          this.querySelector('i.fas').classList.add('act'); //아이콘도 서식을 적용하고
+          // n=1;
+        }else{ //답변이 보이고 있다면
+          el.nextElementSibling.style.display='none'; //답변을 숨긴다
+          this.querySelector('i.fas').classList.remove('act'); //아이콘도 서식을 지운다
+          // n=0;
+        }       
+      });
+    });
+  </script>
+</body>
+</html>

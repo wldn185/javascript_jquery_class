@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04제이쿼리 효과(effect)</title>
+  <style>
+    #photo{display: none;}
+  </style>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="./script/jquery-3.7.1.js"></script>
+  <!-- 제이쿼리 랩퍼 -->
+  <script>
+    $(document).ready(function(){
+      const b1 = $('#btn01');
+      const b2 = $('#btn02');
+      const b3 = $('#btn03');
+      const b4 = $('#btn04');
+      const b5 = $('#btn05');
+      const b6 = $('#btn06');
+      const b7 = $('#btn07');
+      const b8 = $('#btn08');
+      const b9 = $('#btn09');
+      const b10 = $('#btn10');
+
+      //각 버튼을 클릭 해당효과 적용하기
+      b1.click(function(){
+        $('#photo').show(); //나오기
+      });      
+      b2.click(function(){
+        $('#photo').hide(); //숨기기
+      });      
+      b3.click(function(){
+        $('#photo').toggle(); //숨기기, 나오기
+      });      
+      b4.click(function(){
+        $('#photo').slideDown(); //
+      });      
+      b5.click(function(){
+        $('#photo').slideUp();
+      });      
+      b6.click(function(){
+        $('#photo').slideToggle();
+      });      
+      b7.click(function(){
+        $('#photo').fadeIn();
+      });      
+      b8.click(function(){
+        $('#photo').fadeOut();
+      });      
+      b9.click(function(){
+        $('#photo').fadeToggle();
+      });      
+      b10.click(function(){
+        $('#photo').fadeTo(3000,0.4); //지정된 시간동안 투명도를 적용함.
+      });
+      
+    });
+  </script>
+</head>
+<body>
+  <h2>04제이쿼리 효과(effect)</h2>
+  <p>효과(effect)란? 사용자가 지정한 html요소를 선택하여 숨기거나 나타내기, 페이트 효과, 슬라이드 다운, 업, 애니메이션 기능을 사용하기 위한 메소드들이 있다.</p>
+
+  <h3>효과 메서드 종류</h3>
+  <ul>
+    <li>show(); - 선택한 요소를 보이게 한다.</li>
+    <li>hide(); - 선택한 요소를 숨긴다.</li>
+    <li>toggle(); - 선택한 요소를 보이게하거나 숨긴다.</li>
+    <li>slideDown(); - 선택한 요소를 아래로 펼친다.</li>
+    <li>slideUp(); - 선택한 요소를 위로 접는다.</li>
+    <li>slideToggle(); - 선택한 요소를 접거가 아래로 펼친다.</li>
+    <li>fadeIn(); - 선택한 요소를 서서히 보이게 한다.</li>
+    <li>fadeOut(); - 선택한 요소를 서서히 숨긴다.</li>
+    <li>fadeToggle(); - 선택한 요소를 서서히 보이게 하거나 숨긴다.</li>
+    <li>fadeTo(시간, 투명도); - 선택한 요소를 지정한 시간동안 투명하게 설정한다.</li>
+  </ul>
+  <input type="button" value="show()" id="btn01">
+  <input type="button" value="hide()" id="btn02">
+  <input type="button" value="toggle()" id="btn03">
+  <input type="button" value="slideDown()" id="btn04">
+  <input type="button" value="slideUp()" id="btn05">
+  <input type="button" value="slideToggle()" id="btn06">
+  <input type="button" value="fadeIn()" id="btn07">
+  <input type="button" value="fadeOut()" id="btn08">
+  <input type="button" value="fadeToggle()" id="btn09">
+  <input type="button" value="fadeTo()" id="btn10">
+  <p id="photo">
+    <img src="./images/product.jpg" alt="상품사진">
+  </p>
+</body>
+</html>

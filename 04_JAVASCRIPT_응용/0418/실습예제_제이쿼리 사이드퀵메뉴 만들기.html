@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_제이쿼리 사이드퀵메뉴 만들기</title>
+  <style>
+    aside{position: fixed; right: 0px; top: 0px; width: 104px;}
+    aside i{
+      position: absolute; top: 45%; right: 104px;
+      font-size: 30px;
+      padding: 20px 8px;
+      color: #fff;
+      background: #000;
+      cursor: pointer;
+      border-radius: 8px 0px 0px 8px;
+    }
+  </style>
+  <!-- 폰트어썸 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $(document).ready(function(){
+      //버튼 변수
+      const q_btn = $('i.fas');
+      //버튼 클릭수
+      let i = 1;
+      //클릭시 aside 위치 변경
+      q_btn.click(function(){
+        if(i==1){
+          $('aside').animate({'right':'-102px'}, 500,'easeOutBounce');
+          //아이콘폰트의 방향도 반대로 변경되어야
+          $('aside i.fas').css({
+            'transform':'rotate(180deg)',
+            'border-radius':'0px 8px 8px 0px'
+          });
+          i=0;
+        }else{
+          $('aside').animate({'right':'0px'}, 500,'easeOutBounce');
+          //아이콘폰트의 방향도 반대로 변경되어야
+          $('aside i.fas').css({
+            'transform':'rotate(0deg)',
+            'border-radius':'8px 0px 0px 8px'
+          });
+          i=1;
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <h2>실습예제_제이쿼리 사이드퀵메뉴 만들기</h2>
+  <p>쇼핑몰 오른쪽 aside영역에 '주문조회', '배송조회', '배송조회', '최근본상품', '화면스크롤 버튼', 'top버튼' 요소들을 방향버튼 클릭시 animate메서드로 화면에 숨기거나 클릭시 다시 나오게 한다.</p>
+  <p>1개의 버튼에 2가지 기능을 만듦(토글) : '>'버튼을 클릭하면 '<'모양으로 변경</p>
+
+  <aside>
+    <i class="fas fa-angle-right"></i>
+    <img src="./images/quick.jpg" alt="퀵메뉴">
+  </aside>
+</body>
+</html>

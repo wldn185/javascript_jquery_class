@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>18자바스크립트 내장객체_5 윈도우객체</title>
+  <style>
+    .modal{width: 100%; height: 100%; position: fixed; top: 0; right: 0; background-color: rgba(0,0,0,0.8);}
+    .m_inner{width: 470px; height: 500px; margin: 0 auto; transform: translateY(50%);}
+    .m_inner input{border: none; background-color: #fff; width: 470px;}
+  </style>
+</head>
+<body>
+  <h2>18자바스크립트 내장객체_5 윈도우(window)_브라우저객체</h2>
+  <p>브라우저 객체는 사용자가 사용하는 웹브라우저의 창에서 다양한 동작이나 속성을 설정하고자 할 때 사용하는 객체이다.</p>
+  <h3>Window객체</h3>
+  <p>window객제는 브라우저 객체 중 '최상위 객체'로서 현재 실행되고 있는 브라우저 창을 나타낸다.</p>
+
+  <h3>Window객체의 속성과 메서드</h3>
+  <dl>
+    <dt>Window객체의 속성(property)종류</dt>
+    <dd>document</dd>
+    <dd>frameElement</dd>
+    <dd>innerHeight</dd>
+    <dd>innerWidth</dd>
+    <dd>location</dd>
+    <dd>name</dd>
+    <dd>screenX</dd>
+    <dd>screenY</dd>
+    <dd>scrollX, scrollY</dd>
+    <dd>sessionStorage : 사용자가 접속한 정보</dd>
+
+    <dt>Window객체의 메서드(method)종류</dt>
+    <dd>alert(); - 경고창 띄우기</dd>
+    <dd>blur(); - 현재창에서 포커스를 제거</dd>
+    <dd>close(); - 현재창을 당기</dd>
+    <dd>confirm(); - 확인/취소 버튼이 있는 확인창을 표시함.</dd>
+    <dd>focus(); - 현재창에 포커스(초점)를 부여함</dd>
+    <dd>moveBy(); - 현재창을 지정한 크기만큼 이동</dd>
+    <dd>moveTo(); - 현재창을 지정한 좌표로 이동</dd>
+    <dd>open(); - 지정한 문서를 열기</dd>
+    <dd>prompt(); - 사용자가 입력가능한 프롬프트창의 활성화함.</dd>
+    <dd>resizeTo(); - 동적으로 브라우저 창의 크기를 조절</dd>
+    <dd>scroll(); - 문서의 특정위치로 스크롤합니다.</dd>
+    <dd>sizeToContent(); - 내용에 맞게 창의 크기를 조절</dd>
+    <dd>stop(); - 로딩 중지</dd>
+  </dl>
+
+  <input type="button" value="alert('경고창');" onclick="alert('메세지를 띄웁니다.')">
+  <input type="button" value="prompt('내용입력');" onclick="prompt('내용을 입력합니다.')">
+  <input type="button" value="confirm('확인, 취소');" onclick="confirm('결제를 진행하시겠습니까?')">
+  <input type="button" value="open('문서열기');" onclick="popup();">
+  <input type="button" value="close(); 닫기" onclick="window.close();">
+
+  <h3>실습예제. select, option태그를 활용하여 'Family Site'구현하기</h3>
+  <select name="" id="" onchange="siteUrl(this);"> <!-- 사용자가 셀렉트에서 선택을 하면 onchange이벤트가 동작한다. 사용자가 선택한 대상을 this라고 함. -->
+    <option value="">Family Site</option>
+    <option value="http://www.naver.com">네이버</option>
+    <option value="http://www.daum.net">다음</option>
+    <option value="http://www.nate.com">네이트</option>
+  </select>
+
+  <h3>실습예제. location객체를 사용하여 웹페이지의 url주소정보를 표시하기</h3>
+  <p id="location"></p>
+
+  <h3>실습예제. window.screen객체를 사용하여 현재 브라우저의 화면크기 표시하기</h3>
+  <p id="window"></p>
+
+  <h3>실습예제. html문서가 열리면 화면중앙에 모달 윈도 띄우기</h3>
+  <p>팝업창은 브라우저의 팝업차단 기능으로 인해 사용자가 보지 않을 가능성이 많아 요즘 팝업창을 띄우지 않고, 팝업 레이어, 모달윈도(css로 박스 포지션을 배치)를 활용하여 띄운다.</p>
+  <dl>
+    <dt>모달윈도(modal window)</dt>
+    <dd>모달윈도(modal windoe)는 사용자 인터페이스(UI)디자인 개념에서 자식 윈도에서 부모 윈도우로 돌아가기 전에 사용자의 상호동작을 요구하는 창을 말한다.</dd>
+    <dd>모달 윈도는 부모창을 배경으로 어둡게 하고, 자식요소가 화면의 중앙에 배치하도록 하며, 오른쪽 상단에 '닫기'버튼을 삽입하여 닫을 수 잇도록 한다.</dd>
+  </dl>
+
+  <div class="modal"> <!--부모박스-->
+    <div class="m_inner"> <!--자식박스-->
+      <a href="#" title="광고배너"><img src="./images/photo01.jpg" alt="배너"></a>
+      <p><input type="button" value="닫기" id="c_btn"></p>
+    </div>
+  </div>
+
+  <script>
+    function popup(){
+      //필요한 문서 열기
+      //window.open('파일경로와 파일이름.확장자','옵션', 'width=가로크기', 'height=세로크기');
+      window.open('자바스크립트 내장객체_4 문자열객체_실습예제-이미지갤러리(cjmall).html', '', 'width=400, height=410');
+    }
+
+    function siteUrl(a){ //함수 siteUrl의 매개변수 a를 만듦. a는 사용자가 셀렉트에서 선택한 값을 담는 변수이다.
+      if(a.value!=='none'){//a에 변수값이 없지 않다면 즉 있다면        
+        window.open(a.value,'_blank'); //윈도우 현재창에서 해당 웹페이지로 새창으로 연결한다. _self는 현재창에서 해당페이지로 넘어감
+        a==""; //페이지를 연결하고 나서 변수를 비워준다.
+      }else{
+        return; //선택을 안할 경우는 그냥 종료(아무일도 일어나지 않는다.)
+      }
+    }
+
+    //실습 location 현재 문서의 위치정보 가져오기
+    document.getElementById('location').innerHTML=`전체주소 : ${location.href} ${location.host} ${location.protocol}`;
+
+    //실습 screen 현재 브라우저의 크기값 가져오기
+    document.getElementById('window').innerHTML=`현재 화면의 가로해상도, 세로해상도의 크기는 ${screen.width}, ${screen.height}입니다.`;
+
+    //실습 mordal
+    //닫기버튼 변수
+    const c_btn = document.getElementById('c_btn');
+
+    c_btn.addEventListener('click', function(){
+      //부모이름이 class일 경우
+      document.querySelector('.modal').style.display='none';
+    });
+    
+  </script>
+
+  <!-- 
+    getElementById()는 무엇인가>
+      id를 통해 엘리먼트를 반환한다. 만약 document안에 id의 엘리먼트가 없다면 null을 반환한다.
+    querySelector()는 무엇인가
+      selector의 구체적인 그룹과 일치하는 document인 첫번째 엘리먼트를 반환한다. 일치하는게 없으면 null발ㄴ환한다.
+    quertySelectorAll(): document안에 있는 엘리먼트 모두 반환 
+    같은 아이디나 클래스 목록 등이 있다면 자바스크립트는 배열로 인식함. for문을 이용해서 선택할 수 있음.
+-->
+</body>
+</html>

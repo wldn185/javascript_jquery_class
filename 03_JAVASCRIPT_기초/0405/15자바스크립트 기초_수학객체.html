@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15자바스크립트 기초_수학객체</title>
+</head>
+<body>
+  <h2>15자바스크립트 기초_수학객체</h2>
+  <p>수학객체는 다른 내장 객체와는 다르게 new키워드를 사용하지 않는 '정적인 객체'이다.</p>
+  <p>예) let today = new Date(); 날짜 객체 생성</p>
+  <p>예) Math.변수명</p>
+  <p>객체(object)는 매서드(동적), 속성(명시적)으로 나눠진다.</p>
+  <p>매서드 : 기능적인 동작을 말하며 write();가 대표적인 메서드이다.</p>
+  <p>속성 : 서식등을 말하며 style.color='서식종류'가 대표적인 속성이다.</p>
+
+  <h3>1. 수학객체의 속성들</h3>
+  <ul>
+    <li>e : 상수</li>
+    <li>PI : 원주율</li>
+    <li>SQRT2</li>
+    <li>SQRT1 2</li>
+    <li>LN2</li>
+    <li>LN10</li>
+    <li>LOGWE</li>
+    <li>LOG10E</li>
+  </ul>
+
+  <h3>수학객체의 매서드 종류</h3>
+  <ul>
+    <li>max(숫자1, 숫자2, ....) : 숫자들 중에서 최대값을 반환</li>
+    <li>min(숫자1, 숫자2, ....) : 숫자들 중에서 최소값을 반환</li>
+    <li>round(숫자) : 소수점 첫째 자리를 반올림</li>
+    <li>ceil(숫자) : 소수점 자리를 무조건 올림</li>
+    <li>floor(숫자) : 소수점 자리를 무조건 절삭</li>
+    <li>abs(숫자) : 수의 절대값을 반환</li>
+    <li>random(숫자) : 0과 1사이의 난수를 표시함.</li>  
+  </ul>
+
+  <h3>실습예제. 네이버 랜덤 배너 제작하기</h3>
+  <div id="banner">
+    <img src="./images/banner01.jpg" alt="" id="r_banner">
+  </div>
+
+  <script>
+    //1. 변수선언
+    let a, b, c;
+    a = 10;
+    b = 5;
+    c= 0.45678;
+    
+    //2. 매서드 사용하기
+    document.write('최대값 : ' + Math.max(a, b) + '<br>'); //10
+    document.write('최소값 : ' + Math.min(a, b) + '<br>'); //5
+    document.write('반올림 : ' + Math.round(c) + '<br>'); //0
+    document.write('무조건 올림 : ' + Math.ceil(c) + '<br>'); //1
+    document.write('무조건 절삭 : ' + Math.floor(c) + '<br>'); //0
+    document.write('절대값 : ' + Math.abs(-123456789) + '<br>'); //123456789
+    document.write('0과 1사이의 난수 : ' + Math.random() + '<br>'); 
+
+    //실습
+    let r_num = Math.floor(Math.random()*8)+1;
+    document.write(r_num); //1~8까지 랜덤숫자
+    document.getElementById('r_banner').src='./images/banner0'+r_num+'.jpg';
+  </script>
+</body>
+</html>

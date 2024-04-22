@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01연산자 실습하기</title>
+</head>
+<body>
+  <h2>01연산자 실습하기</h2>
+  <p>자바스크립트 연산자를 활용하여 수식을 만들고 결과값에 대해 이해하기</p>
+
+  <script>
+    // 1. 산술연산자 + - * / %
+    let a, b, res;
+    
+    // 데이터 입력
+    a = 10;
+    b = 3;
+
+    // 데이터 출력
+    res = a + b; //10+3
+    document.write(res+'<br>');
+
+    res = a - b; //10-3
+    document.write(res+'<br>');
+
+    res = a%b; //10/3
+    document.write('나머지값' + res+'<br>');
+
+    //2. 비교연산자 <, >, <=, >=, ==, ===
+    res = a>b; //10>3   true
+    document.write(res+'<br>');
+
+    res = a<b; //10<3   false
+    document.write(res+'<br>');
+
+    //3. 대입연산자  a=b, a+=b, a-=b
+    res = a+=b; //13
+    document.write(res+'<br>');
+
+    res = a-=b;
+    document.write(res+'<br>');//위 수식에서 a에 13값이 저장되어서 결과값이 10이 나옴.
+
+    //4. 증감연산자 : ++(1씩증가), --(1씩감소)
+    res = ++a;  //a를 출력하고 난뒤에 1을 더하라~
+    document.write('증감연산자 ' + res+'<br>');
+
+    res = --a; //a를 출력하고 난뒤에 1을 빼라~
+    document.write('증감연산자 ' + res+'<br>');
+
+    //5. 논리연산자 : &&(and), ||(or), !(not)
+    alert((1<2)&&(1>2)); //false
+    alert((1<2)||(1>2)); //true
+
+    //6. 문자열 결합연산자 +
+    res = a + b; //둘다 숫자일 경우에만 연산식이 이루어짐.
+    res = a + 'b'; //둘중에 하나가 문자일 경우 결합연산자(+)로 사용됨.
+
+    //7. 삼항조건연산자  조건식?실행문1:실행문2;
+    let name=prompt('이름을 입력하세요. 예)홍길동');
+
+    name=='홍길동'?document.write('입력하신 이름이 맞습니다.'):document.write('입력하신 이름이 맞지 않습니다. 다시 확인하세요.');
+
+    // 입력하신 id의 값이 master이거나 naver이고, 패스워드가 '1234'일 경우 '로그인 성공', 그렇지 않은경우 '로그인 실패'라고 결과 출력하기
+
+    //1. 변수선언  //2. 변수 데이터입력
+    let id = prompt('아이디를 입력하세요');
+    let pw = prompt('패스워드를 입력하세요');
+    
+    //3. 조건식 작성후 결과값 출력
+    (id=='master'||id=='naver')&&(pw='1234')?document.write('로그인성공'):document.write('실패');
+    
+  </script>
+</body>
+</html>

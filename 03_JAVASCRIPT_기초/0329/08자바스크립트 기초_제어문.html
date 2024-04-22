@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03자바스크립트 기초_제어문</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    span{font-weight:bold;font-size:20px;color:#f00;}
+  </style>
+
+  <script>
+    //1. 변수선언과 데이터 입력
+    let id = 'masterㅁㄴㅇㅁㄴㅇㄹㄴ';
+
+    //2. if문
+    if(id=='master'){ //만약에 변수값이 일치 한다면
+      //참인값이 나와야
+      document.write('<p>위 수식은 <span>참</span>입니다.</p>');
+    }
+
+    //3. if else문
+    if(id=='master'){
+      document.write('<p>위 수식은 <span>참</span>입니다.</p>');
+    }else{
+      document.write('<p>위 수식은 <span>거짓</span>입니다.</p>');
+    }
+
+    //4. else if문
+    let n = prompt('성적점수를 입력하세요. 예)50');
+
+    if(n>=90){
+      document.write('<p><span>수</span>입니다.</p>');
+    }else if(n>=80){
+      document.write('<p><span>우</span>입니다.</p>');
+    }else if(n>=70){
+      document.write('<p><span>미</span>입니다.</p>');
+    }else if(n>=60){
+      document.write('<p><span>양</span>입니다.</p>');
+    }else{
+      document.write('<p><span>가</span>입니다.</p>');
+    }
+
+  </script>
+</head>
+<body>
+  <h2>03자바스크립트 기초_제어문</h2>
+  <p>제어문이란? 프로그램의 흐름을 제어하기 위한 실행문으로서 if, if else, else if문 3가지 종류가 있다.</p>
+  <ul>
+    <li>if문 : 조건식에 만족하면 실행되는 조건문임.</li>
+    <li>if else문 : 조건식에 만족하면 true(합격), 만족하지 않으면 false(불합격)값이 출력되는 조건문임.</li>
+    <li>if else if문 : 조건식이 여러개일 경우 다양한 결과값을 얻기 위한 조건문이다.</li>
+  </ul>
+
+  <div class="banner">
+    <img src="./images/banner1.png" alt="배너" id="photo">
+    <span id="page_n">1/4</span>
+    <i class="fas fa-angle-left" id="l_btn"></i>
+    <i class="fas fa-angle-right" id="r_btn"></i>
+  </div>
+
+  <ul>
+    <li>.querySelectorAll('선택자') : 문서안에 선택한 요소들을 모두 선택하기</li>
+    <li>.querySelector('선택자') : 문서안에 선택한 요소를 선택하기</li>
+    <li>.length : 선택한 요소의 개수를 구해주는 메서드</li>
+    <li>.addEventListener : 선택한 요소에 이벤트를 주고자 할 때 사용</li>
+    <li>.classList.remove('클래스명') : 선택한 요소에 클래스 서식을 제거함.</li>
+    <li>.classList.add('클래스명') : 선택한 요소에 클래스 서식을 적용함.</li>
+    <li>.parentNod : 선택한 요소의 부모요소를 찾아서 선택함.</li>
+  </ul>
+
+  <script>
+    //1. 변수선언
+    const lbtn = document.getElementById('l_btn');
+    const rbtn = document.getElementById('r_btn');
+    let banner = document.getElementById('photo');
+    let count = 1;
+
+    //2. 버튼 클릭시 해당 사진이 변경
+    function moveLeft(){ //왼쪽버튼 클릭시 실행되는 내용
+      //이전 이미지가 나와야   1일때 4, 3, 2, 1, 4......순으로
+      if(count==1){
+        count=4;
+      }else{
+        count = count - 1; //1씩 감소
+      }
+      document.getElementById('page_n').innerHTML=count+'/4';
+      banner.src='./images/banner'+count+'.jpg';
+    }
+
+    // 왼쪽 방향버튼 클릭시 이미지 변경
+    lbtn.onclick=function(){moveLeft();}
+
+    //오른쪽 방향버튼 클릭시 이미지 변경
+    rbtn.onclick=function(){moveRight();}
+
+    function moveRight(){ //오른쪽 버튼 클릭시 실행되는 내용
+
+    }
+  </script>
+
+</body>
+</html>

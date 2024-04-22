@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 내장객체_4 문자열객체_실습예제-이미지갤러리(cjmall)</title>
+  <style>
+    #gallery{
+      width: 600px; height: 800px;
+    }
+    #gallery h3{display: none;}
+    #gallery *{margin: 0; padding: 0;}
+    #gallery ul{display: flex;}
+    #gallery ul li{width: 20%; height: 120px; margin: 0 3px;}
+    #gallery ul li:hover img{filter: brightness(1.1); cursor: pointer;}
+    #gallery img{width: 100%;}
+  </style>
+</head>
+<body>
+  <h2>자바스크립트 내장객체_4 문자열객체_실습예제-속성값을 활용한 상품 미리보기</h2>
+  <p>이미지 5장을 사용하여 썸네일 이미지를 클릭시 큰 사진 보이게 하기</p>
+  <article id="gallery">
+    <h3>갤러리</h3>
+    <img src="./images/photo01.jpg" alt="" id="big_img">
+    <ul class="lnb">
+      <li><img src="./images/photo01.jpg" alt=""></li>
+      <li><img src="./images/photo02.jpg" alt=""></li>
+      <li><img src="./images/photo03.jpg" alt=""></li>
+      <li><img src="./images/photo04.jpg" alt=""></li>
+      <li><img src="./images/photo05.jpg" alt=""></li>
+    </ul>
+  </article>
+
+  <script>
+    const big_img = document.getElementById('big_img');
+    let s_img = document.querySelectorAll('.lnb > li > img');
+
+    for(let i=0; i<s_img.length; i++){
+      s_img[i].addEventListener('click', function(){
+        let img_src = this.src;
+        big_img.src=img_src; 
+
+        for(let j=0;j<s_img.length;j++){
+          console.log(j);
+          s_img[j].style.border='none';
+        }
+
+        s_img[i].style.border='3px solid #f00';
+      });
+    }
+
+  </script>
+</body>
+</html>

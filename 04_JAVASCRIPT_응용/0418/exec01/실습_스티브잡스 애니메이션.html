@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습_스티브잡스 애니메이션</title>
+  <style>
+    .cont_wrap{
+      width: 544px; height: 274px;
+      border: 3px solid;
+      position: relative; overflow: hidden;
+    }
+    .cont_inner > img{position: absolute;}
+    .cont_inner > img:nth-child(1){top: 300px; left: 212px;}
+    .cont_inner > img:nth-child(2){top: 75px; left: -150px;}
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      const img = $('.cont_inner > img:nth-child(1)');
+      const txt = $('.cont_inner > img:nth-child(2)');
+
+      img.animate({'top':'-2px'},500);
+      txt.animate({'left':'50px'},300);
+    });
+  </script>
+</head>
+<body>
+  <h2>실습_스티브잡스 애니메이션</h2>
+  <section class="cont_wrap">
+    <div class="cont_inner">
+      <img src="./images/jobs.png" alt="">
+      <img src="./images/jobs_text.gif" alt="">
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19자바스크립트 내장객체_6 문서(document)객체</title>
+</head>
+<body>
+  <h2>자바스크립트 내장객체_6 문서(document)객체</h2>
+  <p>DOM(Document Object Model)은 넓은 의미로는 웹브라우저가 html을 인식하는 방법이고, 좁은 의미로는 웹문서 안에 있는 요소(객체)들의 집합이다.</p>
+  <p>웹브라우저(크롬, 사파리, 파이어폭스, 오페라, 익스플로러, edge, 모바일 브라우저)마다 DOM구현이 호환되지 않아서 W3C에서 DOM에 대한 표준 규칙을 작성하였다.</p>
+
+  <h3>1. DOM tree 구조의 이해</h3>
+  <img src="./images/dom1.jpg" alt="dom의 이해">
+  <img src="./images/dom2.jpg" alt="태그구조">
+  <img src="./images/dom3.jpg" alt="노드의 집합">
+
+  <h3>2. document객체의 속성 종류</h3>
+  <ul>
+    <li>domain - 현재 문서가 있는 서버의 도메인 이름</li>
+    <li>title - 현재 문서의 제목</li>
+    <li>bgColor - 문서의 배경색</li>
+    <li>fgColor - 문서의 글자색</li>
+    <li>linkColor - 문서의 링크 글자색</li>
+    <li>alinkColor - 하이퍼링크된 글자를 클릭하였을 때 색상</li>
+    <li>vlinkColor - 하이퍼링크된 글자를 누른적 있는 경우 적용되는 색상</li>
+    <li>anchors - 문서의 anchor들을 배열</li>
+    <li>cookie - 쿠키에 대한 정보</li>
+    <li>url - 문서의 url주소</li>
+  </ul>
+
+  <h3>3. document객체의 메서드 종류</h3>
+  <ul>
+    <li>document.open() - 데이터를 보낼 준비</li>
+    <li>document.close() - 문서에 데이터 출력을 마무리함.</li>
+    <li>document.clear() - 브라우저에서 문서를 지움.</li>
+    <li>document.write() - 문서에 데이터내용을 출력함.</li>
+    <li>document.writeln() - 문서에 줄(line)바꾸기를 포함하여 데이터를 출력함.</li>
+  </ul>
+
+  <h3>4. 자바스크립트에서 선택자 사용하기</h3>
+  <ul>
+    <li>태그명으로 선택하기 : document.getElementByTagName('태그명'); => 유사배열로 반환(html collection) for문 돌리기</li>
+    <li>아이디명으로 선택하기 : document.getElementByClassName('클래스명'); => 유사배열로 반환(html collection)</li>
+    <li>css선택자로 선택하기
+      <ul>
+        <li>document.quertySelector('header #logo'); => 단일값으로 반환</li>
+        <li>document.quertySelectorAll('nav a'); => 유사배열로 반환(NodeList)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>실습1. 현재 작성중인 html문서의 정보 알아보기</h3>
+  <p id="print"></p>
+
+  <h3>실습2. 버튼 클릭시 문서안의 글자색, 배경색 변경하기(다크모드)</h3>
+  <input type="button" value="문서 글자색, 배경색 변경하기" id="btn01">
+
+  <h3>실습3. 버튼 클릭시 문서안의 h3태그만 선택하여 글자색 '빨강'으로 변경하기</h3>
+  <input type="button" value="h3태그에 글자색 변경하기" id="btn02">
+
+  <h3>실습3. 버튼 클릭시 li태그만 선택하여 글자색 '파랑'으로 변경하기</h3>
+  <input type="button" value="li태그에 글자색 파랑적용하기" id="btn03">
+
+  <script>
+    // 실습1
+    document.getElementById('print').innerHTML='현재문서의 제목은 <strong style="color:red">'+document.title+'</strong>이고 문서의 저장 경로는 <strong style="color:red">'+document.URL+'</strong>입니다.';
+
+    // 실습2
+    const dark_btn = document.getElementById('btn01');
+    let n = 0; //off일 때 변수
+    //버튼을 클릭하면 글자색, 배경색 변경되어야한다.
+    dark_btn.addEventListener('click', function(){
+      if(n==0){ // 만약에 n값이 0일때 (다크모드) 아래 서식을 적용하고
+        document.bgColor='#222';
+        document.fgColor='#fff';
+        n=1; //n값이 0으로 지정한 후 다크모드로 만들고 다시 라이트모드로 가기 위해 n값을 1로 만들어준다.
+      }else{ // n값이 1이 되었고 0이 아니게 되었기 때문에 아래 서식이 적용된다.
+        document.bgColor='#fff';
+        document.fgColor='#000';
+        n=0; //n값이 1이기 때문에 라이트모드가 되었고 다시 다크모드로 가기 위해 n값을 0으로 만들어준다.
+      }
+    });
+
+    // 실습3
+    const btn2 = document.getElementById('btn02');
+    const h3 = document.getElementsByTagName('h3');
+    btn2.addEventListener('click',function(){ //문서안에 h3가 8개가 있는데 자바스크립트는 인식을 못함. 배열로 보는데 for문을 이용해서 선택해줘야한다.
+      for(let i=0; i<=h3.length; i++){
+        console.log(i);
+        h3[i].style.color='#f00';
+      }
+    });
+
+    // 실습4
+    const btn3 = document.getElementById('btn03');
+    const li = document.getElementsByTagName('li');
+    btn3.addEventListener('click',function(){
+      for(let j=0; j<=li.length; j++){
+        console.log(j);
+        li[j].style.color='#00f';
+        //fgColor는 document객체의 속성으로 사용
+        //일반 문서안의 글자색상을 변경하고자 할 때는 style.color를 사용한다.
+      }
+    });
+  </script>
+</body>
+</html>

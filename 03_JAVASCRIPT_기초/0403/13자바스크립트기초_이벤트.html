@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13자바스크립트기초_이벤트(event)</title>
+  <style>
+    #modal *{margin: 0; padding: 0;}
+    #modal{
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,.4);
+      position: fixed; top: 0; left: 0;
+      display: none;
+    }
+    #modal > .m_inner{
+      width: 380px; height: 410px;
+      background-color: #fff;
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .m_inner #close_btn{
+      border: none;
+      float: right;
+      font-size: 12px;
+      padding: 4px;
+      margin-right: 5px;
+    }
+    /* 실습3 */
+    .tab_con *{padding: 0; margin: 0;}
+    .tab_con{width: 300px;}
+    .tab_con > ul{display: flex;}
+    .tab_con > ul > li{
+      width: 33.3%;
+      list-style: none;
+      text-align: center;
+      line-height: 40px;
+      border: 1px solid #000;
+    }
+    .tab_con > ul > li > a{
+      color: #333; text-decoration: none;
+      display: block;      
+    }
+    #result{
+      width: 100%; height: 200px;
+      background-color: #ccc;
+      border: 1px solid #000;
+      box-sizing: border-box;
+    }
+  </style>
+  <script>
+    window.onload = function(){ //브라우저에 html문서내용 모두 불러오고 난 뒤에 스크립트를 실행.
+      // 표준방식 이벤트
+      // 1. 변수선언
+      const btn = document.getElementById('btn');
+
+      // 2. 클릭이벤트를 사용하여 내용 출력
+      btn.addEventListener('click', function(){
+        alert('표준방식으로 이벤트를 처리하였습니다.');
+      });
+    }
+  </script>
+</head>
+<body>
+  <h2>13자바스크립트기초_이벤트(event)</h2>
+  <p>event - 행사, 사건, 행위, 특별한 상황</p>
+  <p>웹페이지에서는 '클릭', '오버', '아웃', '드래그', '더블클릭', '스크롤', '키보드' 등의 행위를 했을 때 일어나는 사건을 이벤트라고 한다.</p>
+  <dl>
+    <dt>마우스 이벤트 종류</dt>
+    <dd>onclick() - 마우스로 클릭하였을 때 이벤트 발생</dd>
+    <dd>ondbclick() - 마우스로 더블클릭하였을 때 이벤트 발생</dd>
+    <dd>onkeydown() - 키보드로 키를 눌렀을 때 이벤트 발생</dd>
+    <dd>onkeypress() - 키보드로 키를 눌렀다가 떼었을 때 이벤트 발생</dd>
+    <dd>onkeyup() - 키보드로 키를 놓았을 때 이벤트 발생</dd>
+    <dd>onmousedown() - 마우스로 버튼을 눌렀을 때 이벤트 발생</dd>
+    <dd>onmouseup() - 마우스로 버튼을 놓았을 때 이벤트 발생</dd>
+    <dd>onmouseover() - 마우스로 버튼 위에 올렸을 때 이벤트 발생</dd>
+    <dd>onmouseout() - 마우스로 버튼을 올렸다가 떼었을 때 이벤트 발생</dd>
+  </dl>
+
+  <dl>
+    <dt>window 객체의 이벤트 종류</dt>
+    <dd>window.onload - 페이지가 로딩이 완료되었을 때 이벤트 발생</dd>
+    <dd>abort - 문서가 완전히 로딩이 되기 전에 이미지의 로딩이 중단되었을 때 이벤트 발생</dd>
+    <dd>load - 문서의 로딩이 끝나면 이벤트 발생</dd>
+    <dd>unload - 페이지가 다른 곳으로 이동할 때 이벤트 발생</dd>
+    <dd>resize - 요소에 사이즈가 변경되었을 때 이벤트 발생</dd>
+    <dd>scroll - 스크롤바를 움직였을 때 이벤트 발생(마우스 휠동작)</dd>
+  </dl>
+
+  <h3>실습1. 모달윈도 = 팝업레이어</h3>
+  <p>모달윈도(modal window)는 사용자 인터페이스(UI)디자인 개념에서 자식윈도우에서 부모 윈도우로 돌아가기전에 사용자의 상호 동작을 요구하는 창을 말한다.</p>
+  <p>모달 윈도우는 부모창을 어둡게 하고 자식요소가 화면의 가운데 중앙에 배치하도록 하며, 오른쪽 상단에 '닫기'버튼을 만들어서 닫을 수 있도록 한다.</p>
+
+  <div id="modal">
+    <div class="m_inner">
+      <a href="#" title="광고보기"><img src="./images/banner.jpg" alt="광고배너"></a>
+      <p>
+        <input type="checkbox" id="ch"><label for="ch">오늘하루 열지 않음</label>
+        <input type="button" value="닫기" id="close_btn">
+      </p>
+    </div>
+  </div>  
+
+  <h3>실습2. 이미지에 마우스 오버시 다른 이미지로 대체하기</h3>
+  <div id="banner">
+    <img src="./images/mbn04.png" alt="" id="b_img">
+  </div>
+
+  <h3>이벤트 사용방식 3가지</h3>
+  <p>사용자가 실제 이벤트를 발생시켰을 때 그 이벤트를 대응하여 처리하는 것을 '이벤트 핸들러'라고 함. (예: addEventListener)</p>
+  <p>이벤트 핸들러는 앞에 'on'을 붙여주고 이벤트에 대한 동작(함수)를 처리함.</p>
+
+  <h4 style="color: #f00;">1. 인라인방식으로 이벤트 처리하기</h4>
+  <p onclick="window.alert('문자클릭!!');">태그명 on이벤트명 = 자바스크립트 코드 예) div onclick='실행할 내용'</p>
+  <p>이미지 태그 직접 onclick='this.src'로 작성하여 실행</p>
+
+  <h4>2. 고전방식</h4>
+  <p>객체.on이벤트명 = function(){ 실행할 코드; }</p>
+  <p>객체.on이벤트명 = 함수명; function(){ 실행할 코드; }</p>
+  <p>고전방식으로 onload이벤트를 사용하면 파싱순서와 상관없이 스크립트를 위에서 써도 실행이 된다.</p>
+
+  <h4>3. 표준방식</h4>
+  <p>표준방식으로 버튼 클릭시 메세지 창 띄우기</p>
+  <input type="button" id="btn" value="표준방식으로 이벤트 실행하기">
+
+  <h3>실습3. 탭메뉴를 클릭시 해당 색상이 적용되게 하기</h3>
+  <article class="tab_con">
+    <ul>
+      <li><a href="#none" title="red" onclick="colorChange('red')">red</a></li>
+      <li><a href="#none" title="green" onclick="colorChange('green')">green</a></li>
+      <li><a href="#none" title="blue" onclick="colorChange('blue')">blue</a></li>
+    </ul>
+    <div id="result">위 탭메뉴 클릭시 현재요소 배경색이 변경됩니다.</div>
+  </article>
+
+  <p>참고페이지 : http://imnews.imbc.com/more/board/#page=1</p>
+
+  <pre>
+    새로고침 방지
+      1. e.preventDefalut();
+      -> 이벤트 무력화 객체 사용
+
+      2. a href = "#none"
+      -> 링크를 눌렀을 때 위로 올라가는 현상을 막아줌
+      -> #뒤에 아무 이름이나 작성해도 됨. 아이디명인데 그 아이디명을 찾지 못하는 것임. 그래서 새로고침이 되지 않는 것처럼 보임
+
+      3. a href ="javascript:void(0)"
+      -> 자바스크립트에 값이 없다는 뜻
+
+      4. a href = "javascript"
+      -> 자바스크림트에 값이 없다..
+  </pre>
+
+
+
+  <script>
+    // 실습 3
+    //색상 변경을 위한 함수
+    function colorChange(color){
+      // console.log(color); //blue, red, green
+      document.getElementById('result').style.backgroundColor=color;
+    }   
+
+    // 실습2
+    //1. 변수선언
+    const b_img = document.getElementById('b_img');
+
+    //2. 사용자가 이미지에 마우스 오버시 다른 이미지로 파일 대체
+    b_img.addEventListener('mouseover', function(){
+      this.src='./images/mbn04ov.png';
+      this.style.border='3px solid #00f';
+    });
+    b_img.addEventListener('mouseout', function(){
+      this.src='./images/mbn04.png';
+      this.style.border='none';
+    });
+    
+
+    // 실습1
+    // 1. 변수선언
+    const modal = document.getElementById('modal');
+    const c_btn = document.getElementById('close_btn');
+
+    // 2. 문서가 로딩이 끝나면 모달윈도가 보여지게 한다.
+    modal.style.display='block';
+
+    // 3. 닫기 버튼 클릭시 모달윈도 숨기기
+    c_btn.addEventListener('click', function(){
+      modal.style.display='none';
+      // modal.style.opacity='0'; 
+      // setTimeout(display_none,1000); 1초뒤에 함수를 호출하여 투명해진 모달이 숨겨지도록한다.
+    });
+    // function display_none(){
+    //   modal.style.display='none';
+    // }
+
+  </script>
+</body>
+</html>

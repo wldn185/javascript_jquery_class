@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09자바스크립트_제어문03_while문_do while문_for문</title>
+  <style>
+    table{
+      border: 1px solid #333;
+      border-collapse: collapse; /*셀과 셀사이 여백없앰*/
+      width: 400px;
+    }
+    table tr, table td{
+      border: 1px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>09자바스크립트_제어문03(반복문)_while문_do while문_forans</h2>
+  <p>반복문은 작업을 반복수행할 때 사용하며, 조건문(if)이 프로그램을 지적으로 만든다면 반복문은 프로그램을 강력하게 만드는 역할을 한다.</p>
+  <p>주의할 점 - 조건을 잘못 설정하면 무한루프에 빠진느 오류가 생기며, 브라우저에 화면 멈춤현상이 발생됨.</p>
+
+  <pre>
+    1. while문 - 반복조건
+    2. do while문 - 반복조건
+    3. for - 반복조건
+  </pre>
+
+  <script>
+    //1. while문으로 1부터 10까지 반복출력하기
+    let n = 1; //초기값선언
+    while(n<=10){ //n이 10보다 작거나 같을때까지 반복실행한다.
+      document.write(n);
+      n++; //출력하고 1을 더함.  n++출력후 더하기 / ++n 더하고 출력하기
+    }
+    document.write(' while문 출력 <hr>');
+    //2. do while문으로 1부터 10까지 반복출력하기
+    let n1=1; //초기값선언
+    do{
+      document.write(n1);
+      n1++;
+    }while(n1<=10);
+    document.write(' do while문 출력 <hr>');
+    //3. for문으로 1부터 10까지 반복출력하기
+    for(let n2=1;n2<=10;n2++){
+      document.write(n2);
+    }
+    document.write(' for문 출력 <hr>');
+
+    //4. 실습하기 - 20부터 50까지 숫자 출력하기
+    for(let n3=20;n3<=50;n3++){
+      document.write(n3);
+    }
+    document.write(' for문 출력 <hr>');
+    //5. 실습하기 - 50부터 20까지 역순으로 숫자 출력하기 (짝수만 출력하기)
+    for(let n4=50; n4>=20; n4--){
+      if(n4%2==0){
+        document.write(n4);
+      }
+    }
+    document.write(' for문 출력 <hr>');
+
+    //6. 실습하기 - 구구단출력 2*1=2, 2*2=4...9*9=81
+    for(let i=2; i<=9; i++){
+      document.write('**********'+i+'단**********<br>');
+      for(let j=1;j<=9;j++){
+        document.write(i + '*' + j + '=' + i*j + '<br>')
+      }
+    }
+
+    //7. 자리배치도 만들기 - 전체인원수를 입력하고, 한줄에 들어갈 자리수를 입력하면 자동으로 테이블 태그로 표를 만들어주는 반복문 만들기
+    let total_count = prompt('전체인원수를 입력하세요.');
+    let line_count = prompt('한줄로 배치할 인원수를 입력하세요.');
+
+    document.write('<table>');
+    document.write('<caption>테이블 좌석배치도 만들기</caption>');
+      for(let i=0;i<=total_count;i++){ //입장객 수만큼 반복해서 칸을 만든다.
+        document.write('<tr>');
+          for(let j=1; j<=line_count;j++){ //한줄에 입력한 개수만큼 칸을 만든다.
+            let seatNo = i*line_count+j; //인원수 계산
+            if(seatNo > total_count) break; //한줄에 들어갈 인원수보다 시트넘버가 크면 다음줄로 넘김
+            document.write('<td>' + seatNo + '</td>');
+          }
+        document.write('</tr>');
+      }
+    document.write('</table>');
+  </script>
+</body>
+</html>

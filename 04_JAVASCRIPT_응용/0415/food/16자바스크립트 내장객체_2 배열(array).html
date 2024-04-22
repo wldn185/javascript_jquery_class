@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16자바스크립트 내장객체_2배열(array)</title>
+</head>
+<body>
+  <h2>내장객체(object) - 배열(Array)</h2>
+  <dl>
+    <dt>배열(Array)객체란?</dt>
+    <dd>연관된 데이터를 하나처럼 관리하고 싶을 때 사용한다.</dd>
+    <dd>복수의 데이터를 제어할 수 있는 다양한 함수를 제공한다.</dd>
+    <dd>배열의 함수를 이용한 데이터의 편리한 조작이 가능하다.</dd>
+  </dl>
+
+  <p>연관된 정보 - 예)회원정보(이름, 전화번호, 아이디, 패스워드, 성별), 쇼핑정보, 예약정보....</p>
+
+  <h3>1. 배열 객체 선언하기</h3>
+  <p>방법1) let array = new Array(data1, data2, data3, data4...dataN)</p>
+  <p>예) let array = new Array('사과', '배', '귤', '감', '수박', '바나나'...)</p>
+
+  <p>방법2) let array = [data1, data2, data3, data4...dataN]</p>
+  <p>예) let array = ['사과', '배', '귤', '감', '수박', '바나나'...]</p>
+
+  <h3>2. 배열 객체 호출방법 - array[index번호]</h3>
+  <p>배열객체를 호출할 때는 인덱스번호를 사용하는데 인덱스 번호는 0부터 시작한다.</p>
+
+  <h3>3. 배열 객체 메서드</h3>
+  <p>concat - 기존배열에 다른 배열 추가</p>
+  <p>filter - 배열요소 중에서 주어진 필터링 함수에 대해 true인 요소만 골라 새로운 배열을 만듦.</p>
+  <p>forEach - 배열의 모든 요소에 대해 주어진 함수를 실행</p>
+  <p>indexOf - 주어진 값과 일치하는 값이 있는 배열의 요소의 첫 인덱스를 찾아줌.</p>
+
+  <script>
+    //배열 선언하기
+    let fruit = ['사과', '배', '귤', '감', '수박', '바나나']
+
+    //배열 출력하기
+    document.write(fruit[0]+'<br>');
+    document.write(fruit[2]+'<br>');
+    document.write(fruit[4]+'<br>');
+    document.write(fruit+'<br>');
+    document.write('내가 좋아하는 과일은 '+fruit[5]+'입니다.<br>');
+
+    //배열 선언하기
+    let yoil = ['일', '월', '화', '수', '목', '금', '토']
+
+    //오늘의 요일 출력하기
+    document.write(`<p>오늘의 요일은 <strong>${yoil[1]}</strong>요일입니다.</p>`);
+    
+    //반복문을 사용하여 배열데어터값 모두 출력하기
+    for(let i=0; i<yoil.length; i++){
+      document.write('<p>'+yoil[i]+'</p>');
+    }
+
+  </script>
+</body>
+</html>

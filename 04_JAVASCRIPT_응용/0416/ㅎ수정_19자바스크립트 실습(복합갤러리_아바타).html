@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>종합실습_이미지갤러리(아바타)</title>
+  <!-- 폰트어썸 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- 서식 -->
+  <link rel="stylesheet" href="./css/ㅎgallery.css" type="text/css">
+</head>
+<body>
+  <section class="box_photo">
+    <div class="title_area">
+      <h2>포토</h2>
+      <span class="count"></span>
+      <div class="user_btn">
+        <input type="button" value="원본보기" class="button">
+        <input type="button" value="주소복사" class="button">
+      </div>
+    </div>
+    <div class="sub_area">
+      <ul>
+        <li>포스터</li>
+        <li>스틸컷</li>
+      </ul>
+    </div>
+    <article class="photo">
+      <!-- 썸네일 이미지 목록 -->
+      <div class="list-area">
+        <i class="fas fa-angle-left"></i>
+        <ul class="list_photo"> <!--li>img[src='./images/movie_images$.jpg']*17-->
+          <li><img src="./images/movie_image1.jpg" alt=""></li>
+          <li><img src="./images/movie_image2.jpg" alt=""></li>
+          <li><img src="./images/movie_image3.jpg" alt=""></li>
+          <li><img src="./images/movie_image4.jpg" alt=""></li>
+          <li><img src="./images/movie_image5.jpg" alt=""></li>
+          <li><img src="./images/movie_image6.jpg" alt=""></li>
+          <li><img src="./images/movie_image7.jpg" alt=""></li>
+          <li><img src="./images/movie_image8.jpg" alt=""></li>
+          <li><img src="./images/movie_image9.jpg" alt=""></li>
+          <li><img src="./images/movie_image10.jpg" alt=""></li>
+          <li><img src="./images/movie_image11.jpg" alt=""></li>
+          <li><img src="./images/movie_image12.jpg" alt=""></li>
+          <li><img src="./images/movie_image13.jpg" alt=""></li>
+          <li><img src="./images/movie_image14.jpg" alt=""></li>
+          <li><img src="./images/movie_image15.jpg" alt=""></li>
+          <li><img src="./images/movie_image16.jpg" alt=""></li>
+          <li><img src="./images/movie_image17.jpg" alt=""></li>
+        </ul>
+        <i class="fas fa-angle-right"></i>
+      </div>
+
+      <!-- 큰사진이 나오는 박스 -->
+      <div class="main_photo">
+        <div class="arrow">
+          <i class="fas fa-angle-left"></i>
+          <i class="fas fa-angle-right"></i>
+          <img src="./images/movie_image1.jpg" alt="" id="main">
+        </div>
+      </div>
+
+      <!-- 페이지 번호 표시 -->
+      <div id="photo_title">
+        <span id="img_num"></span>
+      </div>
+    </article>
+  </section>
+
+  <script src="./script/ㅎgallery.js"></script>
+</body>
+</html>
