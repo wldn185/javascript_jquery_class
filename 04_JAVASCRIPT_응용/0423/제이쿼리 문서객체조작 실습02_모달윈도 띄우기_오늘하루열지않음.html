@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 문서객체조작 실습02_모달윈도 띄우기_오늘하루열지않음</title>
+  <style>
+    .modal{
+      width: 100%; height: 100%; 
+      background-color: rgba(0,0,0,.4); 
+      position: absolute; top: 0; left: 0;
+      color: #fff;
+      font-weight: bold;
+    }
+    .modal .m_inner{
+      width: 400px; margin: 0 auto;
+      transform: translateY(50%);      
+    }
+    .modal .m_inner a{
+      display: block;
+      width: 400px; height: 400px; margin: 0px auto 10px auto;
+      border-radius: 5%; overflow: hidden;
+    }
+    .modal .m_inner img{width: 100%;}
+    .modal input[type=checkbox]{-display: none;}
+    .modal label{cursor: pointer;}
+    .modal input[type=button]{
+      float: right;
+      border: none;
+      color: #fff;
+      background-color: transparent;
+      font-size: 16px;
+      line-height: 20px;
+      cursor: pointer;
+    }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- 쿠키파일 -->
+  <script src="./script/jquery.cookie.js" type="text/javascript"></script>
+  <script>
+    $(document).ready(function(){
+      // 1. 변수선언
+      let modal = `
+        <div class='modal'>
+          <div class='m_inner'>
+            <a hred='#' title=''>
+              <img src='./images/modal.jpg' alt='배너'>
+            </a>
+            <input type='checkbox' id='ch'>
+            <label for='ch'>오늘 하루 열지 않음</label>
+            <input type='button' value='닫기' id='c_btn'>
+          </div>
+        </div>
+      `
+
+      // body 태그 안쪽 맨 뒤에 modal내용을 출력한다.
+      $('body').append(modal);
+
+      let ch = $('#ch'); //체크박스 변수
+
+      // 현재 사용자의 브라우저에서 쿠키정보가 있다면 모달창이 안나오게 해야함.
+      if($.cookie('popup')=='none'){ //쿠키정보가 있다면 'popup'은 임의로 써준것
+        $('.modal').hide(); //모달창을 숨겨라
+      }
+
+      //체크막스를 체크하고 '닫기'버튼을 누르면 모달창이 닫힘
+      function close_popup(){
+        if(ch.is(':checked')){ // is메서드 뒤에 들어올 속성이 있는지 없는지 말해주는 메서드, 체크가 된 경우라면
+          //쿠키정보가 저장되어야 함.
+          $.cookie('popup','none', {expires:1, path:'/'}); //쿠키 정보를 'popup'은 none값으로 생성하고 1(하루)동안 '/'루트에다가 저장한다.
+          $('.modal').hide();
+        }else{ //체크박스에 체크하지 않았다면
+          //쿠키정볼르 생성하지 않고 그냥 닫기
+          $('.modal').hide();
+        }
+      }
+
+      //닫기 버튼 클릭시 close_popup함수를 호출하여 실행
+      $('#c_btn, #ch').click(function(){
+        close_popup();
+        //#ch도 추가시켜주면 '오늘 하루 열지 않음'만 클릭해도 모달창이 하루동안 숨겨짐
+      });
+
+    });
+  </script>
+
+</head>
+<body>
+  <h2>제이쿼리 문서객체조작 실습02_모달윈도 띄우기_오늘하루열지않음</h2>
+
+  <h3>제이쿼리 쿠키 플러그인</h3>
+  <p>쿠키(cookie):서버에서 클라이언트에게 특정 정보를 저장하는 데이터</p>
+  <p>사용자 이름, 아이디, 방문 횟수 등을 기록하여 차후 접속시 활용</p>
+  <p>제이쿼리 쿠키 사용법 <br>
+    $.cookie('쿠키이름','쿠키값', {expires:만료일, path:'저장경로'});
+  </p>
+  <p>제이쿼리 쿠키는 쿠키플러그인 파일을 다운로드하여 연결후 작성한다.<br>
+    https://plugins.jquery.com/cookie/
+  </p>
+
+  <ul>
+    <li>expires:1 하루</li>
+    <li>var date = new Date(); //분단위로 설정할 때
+      date.setTime(date.getTime() + 1*60*1000); //1분
+      $.cookie('key', 'value', {expires: date, path : '/'});
+    </li>
+    <li></li>
+  </ul>
+</body>
+</html>
