@@ -209,7 +209,7 @@
       //3. 좌측으로 움직이는 함수
       function move_left(){
         //슬라이드 전체목록을 왼쪽으로 1칸 이동하고
-        $('.mslide ul').animate({'margin-left':'-200%'}, 500, function(){
+        $('.mslide ul').stop().animate({'margin-left':'-200%'}, 500, function(){
           //왼쪽 첫번째 슬라이드를 오른쪽 마지막 이미지의 뒤로 자리배치한다.
           $('.mslide ul li:first-child').insertAfter('.mslide ul li:last-child');
           $('.mslide ul').css('margin-left','-100%'); //2칸 밀린 위치를 오른쪽으로 다시 이동          
@@ -220,7 +220,7 @@
       //4. 우측으로 움직이는 함수
       function move_right(){
         //슬라이드 전체목록을 오른쪽 1칸 이동하고
-        $('.mslide ul').animate({'margin-left':'0'}, 500, function(){
+        $('.mslide ul').stop().animate({'margin-left':'0'}, 500, function(){
           $('.mslide ul li:last-child').insertBefore('.mslide ul li:first-child');
           $('.mslide ul').css('margin-left','-100%');
         });        
@@ -287,10 +287,9 @@
       // 콘트롤 버튼 서식 자동으로 변경
       console.log($('.mslide > ul > li').eq(1).attr('class'));
       
-
       function active(){
         let slide_c = ($('.mslide > ul > li').eq(1).attr('class'));
-        console.log(slide_c);
+        // console.log(slide_c);
         if(slide_c == 'slide01'){
           c_btn.removeClass('act');
           c_btn.eq(1).addClass('act');
@@ -305,14 +304,9 @@
           c_btn.eq(4).addClass('act');
         }else if(slide_c == 'slide05'){
           c_btn.removeClass('act');
-          c_btn.eq(5).addClass('act');
+          c_btn.eq(0).addClass('act');
         }
-        c_btn.mouseleave(function(){
-          clearInterval(Timer); //어딘가에서 시간요소가 살아있는 경우가 있을 수 있음으로 확실하게 죽여준다.
-          Timer = setInterval(move_left,4000);
-        });
       }
-      
 
     });
   </script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습2_제이쿼리 문서객체모델_종합갤러리(토탈기능)</title>
+  <!-- 갤러리서식 -->
+  <link rel="stylesheet" href="./css/gallery.css" type="text/css">
+  <!-- 아이콘폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- 제이쿼리 갤러리 구현 -->
+  <script src="./script/gallery.js"></script>
+</head>
+<body>
+  <h2>실습2_제이쿼리 문서객체모델_종합갤러리(토탈기능)</h2>
+  <p>12장의 작품사진 이미지를 사용하여 이미지 갤러리 구현하기</p>
+  <h3>구현순서</h3>
+  <ol>
+    <li>내비게이션 메뉴 5개를 만들고 12장의 이미지 목록을 가로 4개씩 3줄로 배치</li>
+    <li>메뉴 클릭시 해당 주제에 맞는 이미지만 화면에 보이도록 한다. (정렬기능)</li>
+    <li>메뉴 클릭시 해당 메뉴에 서식을 적용하여 현재 선택된 상태를 표시한다. (addClass)</li>
+    <li>갤러리 이미지에 마우스 오버 이번트를 사용하여 캡션이 아래에서 위로 올라오도록 한다. (animate)</li>
+    <li>이미지 클릭(click)시 해당 경로의 이미지(src, attr)가 모달윈도(modal)에 뜨도록한다.</li>
+    <li>모달윈도에서 닫기버튼을 클릭(click)시 사리지도록(hide)한다.</li>
+    <li>모달윈도에서 이전(prev), 다음(next) 버튼 클릭(click)시 해당 사진이 나오도록(show)한다.</li>
+    <li>모달윈도에서 이미지의 하단에 캡션(caption)내용이 표시되도록 한다. (alt속성값 출력)</li>
+    <li>모달윈도에서 이미지의 하단에 페이지 번호(page_n)가 표시되도록 한다.</li>
+    <li>이미지에 마우스 오버시 다양한 효과(filter)를 적용한다.</li>
+  </ol>
+
+  <article class="gallery">
+    <h3>포트폴리오 이미지 갤러리</h3>
+    <nav class="g_nav">
+      <ul>
+        <li><a href="#" title="" class="act">전체보기</a></li>
+        <li><a href="#" title="">기획</a></li>
+        <li><a href="#" title="">설계</a></li>
+        <li><a href="#" title="">디자인</a></li>
+        <li><a href="#" title="">개발</a></li>
+      </ul>
+    </nav>
+    <ul class="g_list">
+      <li>
+        <a href="./images/img1.jpg" title="기획">
+          <img src="./images/img1.jpg" alt="기획">
+          <span class="caption">기획</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img2.jpg" title="디자인">
+          <img src="./images/img2.jpg" alt="디자인">
+          <span class="caption">디자인</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img3.jpg" title="설계">
+          <img src="./images/img3.jpg" alt="설계">
+          <span class="caption">설계</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img4.png" title="디자인">
+          <img src="./images/img4.png" alt="디자인">
+          <span class="caption">디자인</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img5.jpg" title="기획">
+          <img src="./images/img5.jpg" alt="기획">
+          <span class="caption">기획</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img6.jpg" title="설계">
+          <img src="./images/img6.jpg" alt="설계">
+          <span class="caption">설계</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img7.jpg" title="디자인">
+          <img src="./images/img7.jpg" alt="디자인">
+          <span class="caption">디자인</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img8.jpg" title="디자인">
+          <img src="./images/img8.jpg" alt="디자인">
+          <span class="caption">디자인</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img9.png" title="개발">
+          <img src="./images/img9.png" alt="개발">
+          <span class="caption">개발</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img10.jpg" title="기획">
+          <img src="./images/img10.jpg" alt="기획">
+          <span class="caption">기획</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img11.png" title="개발">
+          <img src="./images/img11.png" alt="개발">
+          <span class="caption">개발</span>
+        </a>
+      </li>
+      <li>
+        <a href="./images/img12.jpg" title="디자인">
+          <img src="./images/img12.jpg" alt="디자인">
+          <span class="caption">디자인</span>
+        </a>
+      </li>
+    </ul>
+  </article>
+</body>
+</html>
