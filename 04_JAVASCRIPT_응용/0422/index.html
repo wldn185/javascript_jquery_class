@@ -26,6 +26,15 @@
     .mslide > ul > li{/*width: 1600px;*/ width: 100%;}
     .mslide > ul > li img{width: 100%;} /*반응형 이미지*/
 
+    /* 태블릿 해상도일 경우 */
+    @media screen and (min-width:768px) and (max-width:1024px) {
+      .mslide > ul > li img{height:100vh;object-fit:cover;}
+    }
+    /* 모바일 해상도일 경우 */
+    @media screen and (max-width:768px) {
+      .mslide > ul > li img{height:100vh;object-fit: cover;}
+    }
+
     .mslide i.fas{
       color: #fff;
       padding: 1% 1.5%;
@@ -44,7 +53,7 @@
     .mslide i.fa-angle-right{right: 0;}
 
     /* 콘트롤 내비게이션 서식 */
-    .c_btn{position: relative; bottom: 3%; text-align: center;}
+    .c_btn{position: relative; bottom: 15%; text-align: center;}
     .c_btn span{ /*span은 인라인성격이라 width, height 성격이 먹지 않아서 inline-block으로 바꿔준다.*/
       display: inline-block;
       width: 0.9rem; height: 0.9rem;
@@ -54,7 +63,7 @@
     }
     .act{background-color: #be1833 !important;}
 
-    .next_con{width: 100%; height: 100vh; background-color: #ccc;}
+    /* .next_con{width: 100%; height: 100vh; background-color: #ccc;} */
   </style>
 </head>
 <body>
@@ -132,11 +141,11 @@
   <main>
     <article class="mslide">
       <ul class="slide">
-        <li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li>
-        <li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li>
-        <li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>
-        <li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>
-        <li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>
+        <li class="slide01"><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li>
+        <li class="slide02"><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li>
+        <li class="slide03"><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>
+        <li class="slide04"><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>
+        <li class="slide05"><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>
       </ul>
       <i class="fas fa-angle-left"></i>
       <i class="fas fa-angle-right"></i>
@@ -203,11 +212,9 @@
         $('.mslide ul').animate({'margin-left':'-200%'}, 500, function(){
           //왼쪽 첫번째 슬라이드를 오른쪽 마지막 이미지의 뒤로 자리배치한다.
           $('.mslide ul li:first-child').insertAfter('.mslide ul li:last-child');
-          $('.mslide ul').css('margin-left','-100%'); //2칸 밀린 위치를 오른쪽으로 다시 이동
+          $('.mslide ul').css('margin-left','-100%'); //2칸 밀린 위치를 오른쪽으로 다시 이동          
         }); //.stop()은 연속으로 여러번 클릭하면 클릭한 개수를 막아주는 메서드
-        
-        let j = $('.mslide ul li').index();
-        
+        active();
       }
 
       //4. 우측으로 움직이는 함수
@@ -216,7 +223,8 @@
         $('.mslide ul').animate({'margin-left':'0'}, 500, function(){
           $('.mslide ul li:last-child').insertBefore('.mslide ul li:first-child');
           $('.mslide ul').css('margin-left','-100%');
-        });
+        });        
+        active();
       }
 
       //5. setInterval객체를 사용하여 매 4초마다 함수를 반복 실행하여 슬라이드 자동으로 움직이게 한다.
@@ -257,7 +265,7 @@
         if(i==0){
           $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>')
         }else if(i==1){
-          $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>')          
+          $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>') 
         }else if(i==2){
           $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li>')
           
@@ -277,6 +285,33 @@
 
       
       // 콘트롤 버튼 서식 자동으로 변경
+      console.log($('.mslide > ul > li').eq(1).attr('class'));
+      
+
+      function active(){
+        let slide_c = ($('.mslide > ul > li').eq(1).attr('class'));
+        console.log(slide_c);
+        if(slide_c == 'slide01'){
+          c_btn.removeClass('act');
+          c_btn.eq(1).addClass('act');
+        }else if(slide_c == 'slide02'){
+          c_btn.removeClass('act');
+          c_btn.eq(2).addClass('act');
+        }else if(slide_c == 'slide03'){
+          c_btn.removeClass('act');
+          c_btn.eq(3).addClass('act');
+        }else if(slide_c == 'slide04'){
+          c_btn.removeClass('act');
+          c_btn.eq(4).addClass('act');
+        }else if(slide_c == 'slide05'){
+          c_btn.removeClass('act');
+          c_btn.eq(5).addClass('act');
+        }
+        c_btn.mouseleave(function(){
+          clearInterval(Timer); //어딘가에서 시간요소가 살아있는 경우가 있을 수 있음으로 확실하게 죽여준다.
+          Timer = setInterval(move_left,4000);
+        });
+      }
       
 
     });
