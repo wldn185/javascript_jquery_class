@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11제이쿼리 문서객체조작_위치메서드, 스크롤메서드</title>
+  <style>
+    body{height: 5000px; width: 2000px;}
+    .box{
+      width: 500px; height: 150px;
+      background-color: #ff0;
+      border: 2px solid #f00;
+      position: absolute;
+      top: 300px; left: 500px;
+    }
+    .spos1, .spos2{
+      position: fixed; bottom: 100px;
+      background-color: #ff0; color: #f00;
+    }
+    .spos1{left: 100px;}
+    .spos2{right: 100px;}
+    .t_btn{
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background-color: #333; color: #fff;
+      line-height: 100px; text-align: center;
+      text-decoration: none; font-size: 20px;
+      position: fixed; right: 100px; bottom: 150px;
+    }
+    .con{
+      border: 3px solid #f00;
+      width: 1200px; height: 500px;
+      margin: 0 auto;
+      background-color: #ccc;
+      position: relative; top: 1600px;
+    }
+    .l_box, .r_box{
+      width: 400px; height: 300px;
+      background-color: #0f0;
+      position: absolute;
+      transition: 1s;
+    }
+    .l_box{left: -100%;}
+    .r_box{right: -100%;}
+    .on{left: 0% !important;}
+    .on1{right: 0% !important;}
+
+  </style>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      $('#btn01').click(function(){
+        let v = $('.box').offset();
+        alert('box의 왼쪽에서'+v.left+'px이고 위에서'+v.top+'px입니다.');
+        //.left는 윈쪽에서 떨어진 값 .top은 위에서 떨어진 값..
+      });
+
+      let sposX, sposY;      
+
+      $('.t_btn').hide();
+
+      $(window).scroll(function(){
+        sposX = $(this).scrollLeft();
+        sposY = $(this).scrollTop();
+        $('.spos1').text(sposX);
+        $('.spos2').text(sposY);
+        
+        //세로스크롤값 == sposY
+        if(sposY>=1000){
+          $('.t_btn').stop().fadeIn();
+        }else{
+          $('.t_btn').stop().fadeOut();
+        }
+
+        if(sposY>=1200){
+          $('.l_box').addClass('on');
+          $('.r_box').addClass('on1');
+        }else{
+          $('.l_box').removeClass('on');
+          $('.r_box').removeClass('on1');
+        }
+      });
+
+      $('.t_btn').click(function(){
+        $('html,body').animate({'scrollTop':'0px'},1000);
+
+        return false;
+      });   
+
+      
+
+    });
+  </script>
+</head>
+<body>
+  <h3>1. offset메서드</h3>
+  <p>사용자가 선택한 요소의 위쪽이나 왼쪽을 기준으로 떨어져있는 위치값을 구하고자 할 때 사용하는 메서드이다.</p>
+  <input type="button" value="버튼 클릭시 box의 현재문서에서 떨어진 위치값을 알 수 있습니다." id="btn01">
+  <div class="box">
+    현재 box의 위치값을 출력해보기
+  </div>
+
+  <h3>2. scroll메서드</h3>
+  <p>scroll메서드는 윈도우 객체의 스크롤 바의 위치값을 반환하고 설정해주는 메서드이다. (가로, 세로)</p>
+  <span class="spos1"></span>
+  <span class="spos2"></span>
+
+  <div class="con">
+    <div class="l_box">왼쪽박스</div>
+    <div class="r_box">오른쪽박스</div>
+  </div>
+
+  <a href="#" title="위로 바로가기" class="t_btn">Top</a>
+</body>
+</html>

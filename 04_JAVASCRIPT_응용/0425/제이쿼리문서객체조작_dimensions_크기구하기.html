@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset=UTF-8">
+	
+	<title>제이쿼리 dimensions_크기 구하기</title>
+	<style>
+		#box01{
+			width:300px;height:200px;
+			background-color:#ffff00;
+			padding:20px 30px; /* 위,아래  왼,오른쪽 */
+		}
+		.result{
+			color:#f00;
+			background-color:#ccc;
+		}
+		
+		.result2{	
+			color:#00f;
+			background-color:#ccc;
+		}
+
+		a{
+			position:fixed;
+			right:50px;bottom:100px;
+			background:#000;
+			color:#fff;
+			padding:10px 8px;
+			text-decoration:none;
+			display:none;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			//1. 가로크기값 구하기
+			$('#btn01').click(function(){
+				$('.result').html($('#box01').width()+'px입니다.');
+			});
+
+			//2. 높이값 구하기
+			$('#btn02').click(function(){
+				$('.result').html($('#box01').height()+'px입니다.');
+			});
+
+			//3. 패딩값 포함한 너비값 출력하기
+			$('#btn03').click(function(){
+				$('.result').html($('#box01').innerWidth()+'px입니다.');
+			});
+
+			//4. 패딩값 포함한 높이값 출력하기
+			$('#btn04').click(function(){
+				$('.result').html($('#box01').innerHeight()+'px입니다.');
+			});
+
+			//5. window, document 객체의 크기값을 가져와서 result2에 출력하기
+			$('#btn05').click(function(){
+
+				let txt = "";
+				txt += 'document의 너비는 ' + $(document).width() + 'px이고 높이는 ' + $(document).height() + 'px이고<br> ';
+				txt += 'window의 너비는 ' + $(window).width() + 'px이고 높이는 ' + $(window).height() + 'px입니다.';
+
+				//txt변수값 출력하기
+				$('.result2').html(txt);
+			});
+
+			//윈도우 너비값을 구하여 가로크기에 따른 body태그의 컬러를 변경하기
+			//mobile영역은 0~767px(노랑), tablet 768 ~ 1024px(초록), pc 1025px ~ (하늘색)
+			let w_width = $(window).width();
+
+			$(window).resize(function(){//브라우저 창을 조정하면 이벤트를 발생함
+				w_width = $(window).width();
+				if(w_width >= 1025){
+					$('body').css('background','skyblue');
+				}else if(w_width >= 768){
+					$('body').css('background','#0f0');
+				}else{
+					$('body').css('background','pink');
+				}
+			});
+			
+		});
+	</script>
+</head>
+<body style="background: rgb(204, 204, 204);">
+	<h2>제이쿼리 dimensions_크기구하기</h2>
+	<p>제이쿼리에서는 사용자가 선택한 요소의 크기값을 구하거나 크기값을 설정할 수가 있다.</p>
+	
+	<ul>
+		<li>width(); - 선택한 요소의 가로크기를 구하거나 설정하기</li>
+		<li>height(); - 선택한 요소의 세로크기를 구하거나 설정하기</li>
+		<li>innerWidth(); - 선택한 요소의 가로크기(패딩포함)를 구하거나 설정하기</li>
+		<li>innerHeight(); - 선택한 요소의 세로크기(패딩포함)를 구하거나 설정하기</li>
+	</ul>
+	
+	<button id="btn01">width();</button>
+	<button id="btn02">height();</button>
+	<button id="btn03">innerWidth();</button>
+	<button id="btn04">innerHeight();</button>
+	
+	<div id="box01">가로300px; 세로200px;</div>
+	<p class="result">240px입니다.</p>
+	
+	<h3>버튼을 클릭하면 현재 윈도우창의 너비와 높이, document의 너비와 높이값 출력하기</h3>
+	
+	<button id="btn05">윈도우, document크기 구하기</button>
+	
+	<p class="result2">document의 너비는 984px이고 높이는 3811px이고<br> window의 너비는 984px이고 높이는 866px입니다.</p>
+	
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body></html>

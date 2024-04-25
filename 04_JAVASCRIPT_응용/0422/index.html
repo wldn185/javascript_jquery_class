@@ -276,6 +276,8 @@
           $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>')          
         }
 
+        active(i);
+
       });
 
       c_btn.mouseleave(function(){
@@ -291,20 +293,20 @@
         let slide_c = ($('.mslide > ul > li').eq(1).attr('class'));
         // console.log(slide_c);
         if(slide_c == 'slide01'){
-          c_btn.removeClass('act');
-          c_btn.eq(1).addClass('act');
+          $('.c_btn span').removeClass('act');
+          $('.c_btn span').eq(1).addClass('act');
         }else if(slide_c == 'slide02'){
-          c_btn.removeClass('act');
-          c_btn.eq(2).addClass('act');
+          $('.c_btn span').removeClass('act');
+          $('.c_btn span').eq(2).addClass('act');
         }else if(slide_c == 'slide03'){
-          c_btn.removeClass('act');
-          c_btn.eq(3).addClass('act');
+          $('.c_btn span').removeClass('act');
+          $('.c_btn span').eq(3).addClass('act');
         }else if(slide_c == 'slide04'){
-          c_btn.removeClass('act');
-          c_btn.eq(4).addClass('act');
+          $('.c_btn span').removeClass('act');
+          $('.c_btn span').eq(4).addClass('act');
         }else if(slide_c == 'slide05'){
-          c_btn.removeClass('act');
-          c_btn.eq(0).addClass('act');
+          $('.c_btn span').removeClass('act');
+          $('.c_btn span').eq(0).addClass('act');
         }
       }
 
