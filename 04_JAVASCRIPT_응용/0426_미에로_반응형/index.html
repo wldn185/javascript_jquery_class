@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미에로 하이바</title>
+  <!-- 1. css초기화 -->
+  <link rel="stylesheet" href="./css/reset.css" type="text/css">
+  <!-- 2. base서식 -->
+  <link rel="stylesheet" href="./css/base.css" type="text/css">
+  <!-- 3. common 서식 -->
+  <link rel="stylesheet" href="./css/common.css" type="text/css">
+  <!-- 4. main -->
+  <link rel="stylesheet" href="./css/main.css" type="text/css">
+  <!-- 5. 서브페이지 -->
+  <link rel="stylesheet" href="./css/sub1.css" type="text/css">
+  <!-- 6. 게시판 -->
+  <link rel="stylesheet" href="./css/board.css" type="text/css">
+  <!-- 폰트어썸 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- 1. 제이쿼리 라이브러리 연결 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>  
+  <!-- 2. 메인 제이쿼리 -->
+  <script src="./script/main.js"></script>
+  <!-- 3. 제이쿼리 쿠키플러그인 -->
+  <script src="./script/jquery.cookie.js"></script>
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header>
+    <h1>
+      <a href="index.html" title="메인페이지로 바로가기">
+        <img src="./images/logo2.png" alt="상단로고">
+      </a>
+    </h1>
+
+    <!-- 토글버튼 -->
+    <div id="toggle">
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+    </div>
+
+    <!-- 메인메뉴 -->
+    <nav class="gnb">
+      <ul>
+        <li><a href="#" title="미에로">미에로<i class="fa-solid fa-angle-down"></i></a>
+          <ul class="sub">
+            <li><a href="#" title="브랜드 스토리">브랜드 스토리</a></li>
+            <li><a href="#" title="식이섬유 스토리">식이섬유 스토리</a></li>
+          </ul>
+        </li>
+        <li><a href="#" title="제품소개">제품소개<i class="fa-solid fa-angle-down"></i></a>
+          <ul class="sub">
+            <li><a href="#" title="미에로하이바">미에로하이바</a></li>
+            <li><a href="#" title="미에로하이바 sparkling zero">미에로하이바 sparkling zero</a></li>
+            <li><a href="#" title="헬씨올리고">헬씨올리고</a></li>
+          </ul>
+        </li>
+        <li><a href="#" title="미에로스토리">미에로스토리<i class="fa-solid fa-angle-down"></i></a>
+          <ul class="sub">
+            <li><a href="#" title="TV광고">TV광고</a></li>
+            <li><a href="#" title="인쇄광고">인쇄광고</a></li>
+            <li><a href="#" title="프로모션">프로모션</a></li>
+          </ul>
+        </li>
+        <li><a href="http://qkrwldn0240.dothome.co.kr/bbs/bbs/board.php?bo_table=event" title="미에로이벤트">미에로이벤트<i class="fa-solid fa-angle-down"></i></a>
+          <ul class="sub">
+            <li><a href="http://qkrwldn0240.dothome.co.kr/bbs/bbs/board.php?bo_table=event" title="진행중인 이벤트">진행중인 이벤트</a></li>
+            <li><a href="#" title="당첨자 발표">당첨자 발표</a></li>
+          </ul>
+        </li>
+        <li><a href="http://qkrwldn0240.dothome.co.kr/bbs/bbs/board.php?bo_table=miero_notice" title="공지사항">공지사항</a></li>
+        <li><a href="#" title="공식쇼핑몰"><i class="fa-solid fa-bag-shopping"></i>공식쇼핑몰</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 메인영역 -->
+  <main>
+    <!-- 1. 메인슬라이드 -->
+    <article class="slide">
+      <nav class="lnb">
+        <ul>
+          <li class="act">&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+        </ul>
+      </nav>
+      <div class="slide_wrapper">
+        <div><img src="./images/visual01.png" alt=""></div>
+        <div><img src="./images/visual02.jpg" alt=""></div>
+        <div><img src="./images/visual03.jpg" alt=""></div>
+      </div>
+      <!-- 좌우 방향 버튼 -->
+      <ul class="s_btn">
+        <li><img src="./images/left.png" alt="이전버튼"></li>
+        <li><img src="./images/right.png" alt="다음버튼"></li>
+      </ul>
+      <i class="fas fa-pause"></i>
+    </article>
+
+    <!-- 2. 공지, 유튜브 -->
+    <section class="news_con">
+      <article class="youtube">
+        <h2>
+          <span>마시는 식이섬유</span>
+          <img src="./images/logo.png" alt="로고">
+        </h2>
+        <iframe src="https://www.youtube.com/embed/41osFpTtc_Q" title="[미에로화이바] 2024 TVCF 톡 쏘는 식이섬유 미에로화이바 스파클링 제로_15&#39;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </article>
+      <article class="notice">
+        <h2>
+          <span>미에로의 새로운 소식을 알려드립니다.</span>
+          미에로 하이바 News
+        </h2>
+        <ul>
+          <li><i class="far fa-circle"></i>
+            <a href="#" title="뉴스">현대약품, "탄산으로 더욱 강력해진 식이섬유 음료!" '미에로하이바 스파클링 제로' 신제품 출시</a>
+          </li>
+          <li><i class="far fa-circle"></i>
+            <a href="#" title="뉴스">미에로화이바, 어베이징 브루잉 컴퍼니와 협업 통해 '미에로하이볼' 출시</a>
+          </li>
+          <li><i class="far fa-circle"></i>
+            <a href="#" title="뉴스">'식이섬유로 지구 여섯 바퀴'...현대약품, 미에로화이바 누적 판매 20억 병 달성</a>
+          </li>
+          <li><i class="far fa-circle"></i>
+            <a href="#" title="뉴스">현대약품, 마시는 식이섬유 "미에로화이바" 350ml 아셉틱 제조 리뉴얼 출시</a>
+          </li>
+          <li><i class="far fa-circle"></i>
+            <a href="#" title="뉴스">“일상 속 미에로화이바가 필요한 순간” 미에로화이바 TVCF 온에어</a>
+          </li>
+          <li><i class="far fa-circle"></i>
+            <a href="#" title="뉴스">'미에로화이바' 새로운 TV CF 온에어</a>
+          </li>
+          <li><i class="far fa-circle"></i>
+            <a href="#" title="뉴스">'미에로화이바'와 '삼성헬스' 콜라보 마케팅 '미에로 헬스 서비스' 운영 개시</a>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- 3. 탭콘텐츠 -->
+    <section class="tab_con_wrap">
+      <article>
+        <h2>당신이 몰랐던 식이섬유</h2>
+        <ul class="tab_con">
+          <li>
+            <a href="#" title="식이섬유란?" class="t_act">식이섬유란?<i class="fa-solid fa-angle-down"></i></a>
+            <div class="cont">
+              <dl>
+                <dt>식이섬유란?</dt>
+                <dd>사람의 소화효소로 분해되지 않는 성분, 몸 속의 과다한 양분흡수를 막아주고, 장의 리듬을 조절하며,음식물이 장 속에 머무는 시간을 단축시키는 등 현대 식생활에 꼭 필요한 물질로 제 7의 영양소로 주목 받고 있음</dd>
+                <dd><br>&#8251;출처 : 파워푸드 슈퍼푸드 사전</dd>
+              </dl>
+            </div>
+          </li>
+          <li>
+            <a href="#" title="식이섬유 기능">식이섬유 기능<i class="fa-solid fa-angle-down"></i></a>
+            <div class="cont">
+              <dl>
+                <dt>식이섬유의 기능</dt>
+                <dd>1.배설활동 촉진, 변비 예방</dd>
+                <dd>2.대사질환에 효과적</dd>
+                <dd>3.콜레스테롤 감소</dd>
+              </dl>
+            </div>
+          </li>
+          <li>
+            <a href="#" title="식이섬유를 섭취하려면?">식이섬유를 섭취하려면?<i class="fa-solid fa-angle-down"></i></a>
+            <div class="cont">
+              <dl>
+                <dt>식이섬유를 섭취하려면?</dt>
+                <dd><img src="./images/mcon2_8.png" alt=""></dd>
+                <dd><img src="./images/mcon2_9.png" alt=""></dd>
+                <dd><img src="./images/mcon2_10.png" alt=""></dd>
+              </dl>
+            </div>
+          </li>
+        </ul>
+      </article>
+    </section>
+    
+    <!-- 4. 인기제품 -->
+    <section class="best_product">
+      <article>
+        <h2 class="title2">Miero Fiber</h2>
+      
+      <!-- ul>li*4>img+h3+p -->
+      <ul>
+        <li>
+          <img src="./images/mcon3_2.png" alt="미에로화이바">
+          <h3>미에로화이바</h3>
+          <p>식이섬유가 함유된 몸매관리에 도움을 주는 국민 식이섬유 음료</p>
+        </li>
+        <li>
+          <img src="./images/mcon3_5.png" alt="미에로화이바">
+          <h3>미에로화이바 <br>
+            SPARKLING ZERO</h3>
+          <p>미에로화이바의 맛과 식이섬유는 그대로! 당류는 ZERO! 탄산으로 짜릿하게 즐기는 미에로화이바</p>
+        </li>
+        <li>
+          <img src="./images/mcon3_3.png" alt="헬씨올리고">
+          <h3>헬씨올리고</h3>
+          <p>올리고당을 함유하고 있어, 내 몸속의 비피더스 균을 직접 키워주는 장 건강 지킴이</p>
+        </li>
+        <li>
+          <img src="./images/mcon3_4.png" alt="헬씨올리고 프로바이오틱스">
+          <h3>헬씨올리고 프로바이오틱스</h3>
+          <p>우수한 내산성으로 장내에 잘 정착하여 유산균 증식 및 유해균 억제&middot;배변활동 원활에 도움을 줄 수 있는 제품</p>
+        </li>
+      </ul>
+      </article>
+    </section>
+
+    <!-- 5. 이벤트슬라이드 -->
+    <section class="event">
+      <h2 class="title2">미에로화이바 EVENT</h2>
+      <article>
+        <div class="es_wrap">
+          <div class="e_slide">
+            <a href="#" title="">
+              <img src="./images/event01.png" alt="">
+              <div class="e_txt">
+                <span>진행중</span>
+                <h3>미에로화이바 스파클링 제로 꿀조합 이벤트1</h3>
+                <p>( 2024.03.22 ~ 2024.04.30 )</p>
+              </div>
+            </a>
+          </div>
+          <div class="e_slide">
+            <a href="#" title="">
+              <img src="./images/event02.jpg" alt="">
+              <div class="e_txt">
+                <span>진행중</span>
+                <h3>미에로화이바 스파클링 제로 꿀조합 이벤트2</h3>
+                <p>( 2024.03.22 ~ 2024.04.30 )</p>
+              </div>
+            </a>            
+          </div>
+          <div class="e_slide">
+            <a href="#" title="">
+              <img src="./images/event03.png" alt="">
+              <div class="e_txt">
+                <span>진행중</span>
+                <h3>미에로화이바 스파클링 제로 꿀조합 이벤트3</h3>
+                <p>( 2024.03.22 ~ 2024.04.30 )</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </article>
+      <i class="fa-solid fa-angle-left"></i>
+      <i class="fa-solid fa-angle-right"></i>
+    </section>
+
+    <!-- 6. 광고갤러리 - 그리드 -->
+  </main>
+
+  <!-- 푸터영역 -->
+  <footer>
+    <a href="#" title="위로 바로가기" class="t_btn">
+      <img src="./images/top_up.png" alt="위로바로가기">
+    </a>
+    <!-- 중앙 배치를 위한 영역 -->
+    <div class="f_inner">
+      <nav>
+        <dl>
+          <dt><a href="#" title="">미에로</a></dt>
+          <dd><a href="#" title="브랜드 스토리">브랜드 스토리</a></dd>
+          <dd><a href="" title="식이섬유 스토리">식이섬유 스토리</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#" title="제품소개">제품소개</a></dt>
+          <dd><a href="#" title="미에로하이바">미에로하이바</a></dd>
+          <dd><a href="#" title="미에로하이바 sparkling zero">미에로하이바 sparkling zero</a></dd>
+          <dd><a href="#" title="헬씨올리고">헬씨올리고</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#" title="미에로 스토리">미에로 스토리</a></dt>
+          <dd><a href="" title="TV광고">TV광고</a></dd>
+          <dd><a href="" title="인쇄광고">인쇄광고</a></dd>
+          <dd><a href="" title="프로모션">프로모션</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="http://qkrwldn0240.dothome.co.kr/bbs/bbs/board.php?bo_table=event" title="미에로 이벤트">미에로 이벤트</a></dt>
+          <dd><a href="http://qkrwldn0240.dothome.co.kr/bbs/bbs/board.php?bo_table=event" title="진행중인 이벤트">진행중인 이벤트</a></dd>
+          <dd><a href="#" title="당첨자 발표">당첨자 발표</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="http://qkrwldn0240.dothome.co.kr/bbs/bbs/board.php?bo_table=miero_notice" title="공지사항">공지사항</a></dt>
+          <dd><a href="http://qkrwldn0240.dothome.co.kr/bbs/bbs/board.php?bo_table=miero_notice" title="뉴스공지">News&Notice</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#" title="현대약품">현대약품</a></dt>
+          <dd>&nbsp;</dd>
+        </dl>
+        <dl>
+          <dt>Connect with us</dt>
+          <dd>
+            <a href="#" title="페이스북"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" title="인스타그램"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" title="유튜브"><i class="fa-brands fa-youtube"></i></a></dd>
+        </dl>
+      </nav>
+    </div>
+    <address>
+      <h2><a href="index.html" title="메인페이지로 바로가기">
+        <img src="./images/logo2.png" alt="하단로고">
+      </a></h2>
+      <p>copyright&copy; 2024 MIERO FIBER. All Rights Reserved.</p>
+    </address>
+  </footer>
+</body>
+</html>

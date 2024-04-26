@@ -1,0 +1,151 @@
+@charset "utf-8";
+
+:root{
+  --w_size: 1200px; margin: 0 auto;
+}
+/* 메인영역 서식 */
+main{}
+
+.slide{
+  position:relative;height:90vh;overflow:hidden;
+  border-bottom: 1px solid red;
+}
+.slide_wrapper div{position:absolute;width:100%;} 
+.slide_wrapper div img{width:100%;}
+.slide_wrapper div:first-child img{transform: scale(1.3);}
+.slide_wrapper div:first-child{z-index:30;}
+.slide_wrapper div:nth-child(2){z-index:20;}
+.slide_wrapper div:last-child{z-index:10;}
+
+/* 좌우버튼 서식 */
+.s_btn{
+  position: absolute; bottom:165px; left: 90px;
+  z-index: 1000;
+  display: flex;
+}
+.s_btn li{
+  background-color: #f2fcfb;
+  padding: 5px; margin: 0px 5px;
+  cursor: pointer;
+}
+
+/* 태블릿 해상도일 경우 */
+@media screen and (min-width:768px) and (max-width:1024px) {
+  .slide_wrapper div img{
+    height:100vh;object-fit:cover;
+  }
+}
+/* 모바일 해상도일 경우 */
+@media screen and (max-width:768px) {
+  .slide_wrapper div img{height:100vh;object-fit: cover;}
+}
+.lnb ul{
+  position:absolute;bottom:50%;right:5%;z-index:100;
+}
+.lnb li{
+  width:15px;height:15px;border-radius:50%;
+  background:#fff;
+  margin:0px 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.act{
+  background: #f36f21 !important;
+}
+i.fas{
+  color: #333;font-size: 30px;
+  position:absolute;bottom:165px;left:200px;z-index:100;
+  z-index: 100;
+  background-color: #f2fcfb;
+  cursor: pointer;
+  padding: 6.5px 12px;
+}
+
+/* 2. 공지, 유튜브 서식 */
+.news_con{
+  width: var(--w_size);
+  display: flex; margin: 60px auto;
+}
+.news_con article{height: 500px; margin-right: 25px;}
+.news_con h2{
+  font-size: 44px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.news_con h2 img{width: 280px;}
+.news_con h2 span{font-size: 1.5rem; display: block;}
+.news_con .youtube{width: 665px;}
+.news_con iframe{width: 100%; height: 315px;}
+.news_con .notice{width: 520px;}
+.news_con .notice i.fa-circle{
+  color: #f36f21; font-size: 1rem;
+  padding-right: 6px;
+}
+.news_con .notice li{
+  line-height: 250%;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  white-space: nowrap;
+}
+.news_con .notice li a{font-size: 1rem;}
+
+/* 3. 탭콘텐츠 서식 */
+.tab_con_wrap{background-color: #f1f1f1;}
+.tab_con_wrap article{
+  width: var(--w_size); height: 500px;
+  margin: 0 auto;
+  background: url('../images/mcon2_7.png') no-repeat right;
+  background-size: 560px;
+}
+.tab_con_wrap article > h2{
+  font-size: 2rem; font-weight: bold;
+  padding: 50px 0px 20px 0px;
+}
+.tab_con{
+  display: flex; height: 500px;
+  padding-top: 40px; position: relative;
+}
+.tab_con li{margin: 0px 5px;}
+.tab_con li a{
+  padding: 10px; background-color: #333; color: #fff;
+  font-size: 1.5rem;
+}
+.tab_con li img{width: 560px;}
+.tab_con li a:hover{text-decoration: none;}
+
+.cont{
+  position: absolute;
+  width: 54%; left: 0; top: 100px;
+  display: none;
+}
+.tab_con li:first-child .cont{display: block;}
+.tab_con dl{}
+.tab_con dl dt{font-size: 1.5rem; font-weight: bold; margin: 20px 0px 20px;}
+.tab_con dl dd{font-size: 1rem; line-height: 180%;}
+/* 메뉴클릭시 적용되는 서식 */
+.t_act{background-color: #f36f21 !important;}
+i.fa-angle-down{display: none;} /*pc버전에선 안보이게*/
+
+/* 4. 인기제품 서식 */
+.best_product { width:100%; background:#ffc845; padding:60px 0px; } 
+.best_product article { width:1200px; margin:0px auto; } 
+.title2 { font-size:32px; font-weight:bold; padding-bottom:20px; } 
+.best_product ul { display:flex; } 
+.best_product ul > li { width:25%; padding:0px 10px; box-sizing:border-box; } 
+.best_product ul > li img { width:100%; } 
+.best_product ul > li h3 { font-size:24px;border-bottom:1px solid #9f5e05; height:60px; padding-top:10px; } 
+.best_product ul > li p { padding-top:10px; font-size:14px;line-height:30px; color: #805a28; }
+
+/* 5. 이벤트슬라이드 */
+.event{width: 1200px; margin: 100px auto; position: relative;}
+.event article{position: relative; overflow: hidden;}
+.es_wrap{display: flex; width: 3600px;}
+.e_slide{width: 1200px;}
+.event i.fa-solid{position: absolute; top: 160px; font-size: 30px; padding: 5px 12px; border-radius: 50%; border: 1px solid #333; background-color: #fff;}
+.event i.fa-angle-left{left: -55px;}
+.event i.fa-angle-right{right: -55px;}
+.e_slide a{display: flex;}
+.e_slide .e_txt{padding: 30px 0px 0px 40px;}
+.e_txt span{background-color: #ccc; padding: 5px 10px;}
+.e_txt h3{font-size: 18px; line-height: 60px;}
+.e_txt p{font-size: 16px;}

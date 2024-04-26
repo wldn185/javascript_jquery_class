@@ -1,0 +1,43 @@
+ <!-- 4. 인기제품 -->
+    <section class="best_product">
+      <article>
+        <h2 class="title2">Miero Fiber</h2>
+      
+      <!-- ul>li*4>img+h3+p -->
+      <ul>
+        <li>
+          <img src="./images/mcon3_2.png" alt="미에로화이바">
+          <h3>미에로화이바</h3>
+          <p>식이섬유가 함유된 몸매관리에 도움을 주는 국민 식이섬유 음료</p>
+        </li>
+        <li>
+          <img src="./images/mcon3_5.png" alt="미에로화이바">
+          <h3>미에로화이바 <br>
+            SPARKLING ZERO</h3>
+          <p>미에로화이바의 맛과 식이섬유는 그대로! 당류는 ZERO! 탄산으로 짜릿하게 즐기는 미에로화이바</p>
+        </li>
+        <li>
+          <img src="./images/mcon3_3.png" alt="헬씨올리고">
+          <h3>헬씨올리고</h3>
+          <p>올리고당을 함유하고 있어, 내 몸속의 비피더스 균을 직접 키워주는 장 건강 지킴이</p>
+        </li>
+        <li>
+          <img src="./images/mcon3_4.png" alt="헬씨올리고 프로바이오틱스">
+          <h3>헬씨올리고 프로바이오틱스</h3>
+          <p>우수한 내산성으로 장내에 잘 정착하여 유산균 증식 및 유해균 억제&middot;배변활동 원활에 도움을 줄 수 있는 제품</p>
+        </li>
+      </ul>
+      </article>
+    </section>
+
+-----------------------------------------------------
+/* 4. 인기제품 서식 */
+ .best_product { width:100%; background:#ffc845; padding:60px 0px; } 
+ .best_product article { width:1200px; margin:0px auto; } 
+ .title2 { font-size:32px; font-weight:bold; padding-bottom:20px; } 
+ .best_product ul { display:flex; } 
+ .best_product ul > li { width:25%; padding:0px 10px; box-sizing:border-box; } 
+ .best_product ul > li img { width:100%; } 
+ .best_product ul > li h3 { font-size:24px;border-bottom:1px solid #9f5e05; height:60px; padding-top:10px; } 
+ .best_product ul > li p { padding-top:10px; font-size:14px;line-height:30px; color: #805a28; } 
+ 

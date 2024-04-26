@@ -73,8 +73,8 @@
       function fadeInOut(){        
         c_btn.removeClass('act'); //콘트롤 버튼에 서식 모두제거하고
         c_btn.eq(i).addClass('act'); //인덱스 번호에 해당하는 콘트롤버튼에 서식 적용
-        slide.fadeOut(); //보이는 이미지전부 숨기고
-        slide.eq(i).fadeIn(); //인덱스 번호에 해당하는 n번째 이미지가 나옴
+        slide.stop().fadeOut(); //보이는 이미지전부 숨기고
+        slide.eq(i).stop().fadeIn(); //인덱스 번호에 해당하는 n번째 이미지가 나옴
       }
 
       function move(){
