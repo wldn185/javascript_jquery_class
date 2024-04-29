@@ -194,6 +194,11 @@
 
     // 방법2. 제이쿼리로 2단 메뉴 구현하기
     $(document).ready(function(){
+        //1. 변수선언
+      const gnb = document.querySelector('.h_bottom .gnb');
+      const h_bottom = document.querySelector('.h_bottom');
+      let i = $('.c_btn span').index();
+
 
       $(gnb).hover(function(){ //마우스 오버시
         $(h_bottom).stop().animate({'height':'326px'},300);
@@ -216,7 +221,13 @@
           $('.mslide ul li:first-child').insertAfter('.mslide ul li:last-child');
           $('.mslide ul').css('margin-left','-100%'); //2칸 밀린 위치를 오른쪽으로 다시 이동          
         }); //.stop()은 연속으로 여러번 클릭하면 클릭한 개수를 막아주는 메서드
-        active();
+        
+        if(i==4){
+          i=0;
+        }else{
+          i++;
+        }
+        active(i);
       }
 
       //4. 우측으로 움직이는 함수
@@ -226,7 +237,13 @@
           $('.mslide ul li:last-child').insertBefore('.mslide ul li:first-child');
           $('.mslide ul').css('margin-left','-100%');
         });
-        active();
+
+        if(i==0){
+          i=4;
+        }else{
+          i--;
+        }
+        active(i);
       }
 
       //5. setInterval객체를 사용하여 매 4초마다 함수를 반복 실행하여 슬라이드 자동으로 움직이게 한다.
@@ -260,9 +277,9 @@
         c_btn.removeClass('act');
         $(this).addClass('act');
         
-        clearInterval(Timer);
+        //clearInterval(Timer);
         i = $(this).index();
-        // console.log(i);
+        console.log(i);
 
         if(i==0){
           $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>')
@@ -277,79 +294,19 @@
         }else if(i==4){
           $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>')          
         }
+
+        active(i);
       });
 
       c_btn.mouseleave(function(){
         clearInterval(Timer); //어딘가에서 시간요소가 살아있는 경우가 있을 수 있음으로 확실하게 죽여준다.
         Timer = setInterval(move_left,4000);
       });
-
-      // // 콘트롤 버튼 서식 자동으로 변경
-      // function active(i){
-      //   console.log(i);
-      //   if(i==0){
-      //     c_btn.removeClass('act');
-      //     c_btn.eq(0).addClass('act');
-      //   }else if(i==1){
-      //     c_btn.removeClass('act');
-      //     c_btn.eq(0).addClass('act');
-      //   }else if(i==2){
-      //     c_btn.removeClass('act');
-      //     c_btn.eq(0).addClass('act');
-      //   }else if(i==3){
-      //     c_btn.removeClass('act');
-      //     c_btn.eq(0).addClass('act');
-      //   }else if(i==4){
-      //     c_btn.removeClass('act');
-      //     c_btn.eq(0).addClass('act');
-      //   }
-      // };
-
-      // console.log($('.mslide > ul > li').eq(1).find('img').attr('alt'));
       
-      // function active(){
-      //   let slide_c = ($('.mslide > ul > li').eq(1).find('img').attr('class'));
-      //   // console.log(slide_c);
-      //   if(slide_c == '슬라이드1'){
-      //     $('.c_btn span').removeClass('act');
-      //     $('.c_btn span').eq(1).addClass('act');
-      //   }else if(slide_c == '슬라이드2'){
-      //     $('.c_btn span').removeClass('act');
-      //     $('.c_btn span').eq(2).addClass('act');
-      //   }else if(slide_c == '슬라이드3'){
-      //     $('.c_btn span').removeClass('act');
-      //     $('.c_btn span').eq(3).addClass('act');
-      //   }else if(slide_c == '슬라이드4'){
-      //     $('.c_btn span').removeClass('act');
-      //     $('.c_btn span').eq(4).addClass('act');
-      //   }else if(slide_c == '슬라이드5'){
-      //     $('.c_btn span').removeClass('act');
-      //     $('.c_btn span').eq(0).addClass('act');
-      //   }
-      // }
-    
-      
-      console.log($('.mslide > ul > li').eq(1).find('img').attr('alt'));
-      
-      function active(){
-        let slide_c = $('.mslide > ul > li').eq(1).find('img').attr('alt');
-        // console.log(slide_c);
-        if(slide_c == '슬라이드1'){
-          $('.c_btn span').removeClass('act');
-          $('.c_btn span').eq(1).addClass('act');
-        }else if(slide_c == '슬라이드2'){
-          $('.c_btn span').removeClass('act');
-          $('.c_btn span').eq(2).addClass('act');
-        }else if(slide_c == '슬라이드3'){
-          $('.c_btn span').removeClass('act');
-          $('.c_btn span').eq(3).addClass('act');
-        }else if(slide_c == '슬라이드4'){
-          $('.c_btn span').removeClass('act');
-          $('.c_btn span').eq(4).addClass('act');
-        }else if(slide_c == '슬라이드5'){
-          $('.c_btn span').removeClass('act');
-          $('.c_btn span').eq(0).addClass('act');
-        }
+      function active(i){
+        //console.log(i);
+        $('.c_btn span').removeClass('act');
+        $('.c_btn span').eq(i).addClass('act');
       }
 
     });

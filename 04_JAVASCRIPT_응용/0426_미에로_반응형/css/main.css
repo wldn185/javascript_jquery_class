@@ -4,8 +4,6 @@
   --w_size: 1200px; margin: 0 auto;
 }
 /* 메인영역 서식 */
-main{}
-
 .slide{
   position:relative;height:90vh;overflow:hidden;
   border-bottom: 1px solid red;
@@ -29,16 +27,6 @@ main{}
   cursor: pointer;
 }
 
-/* 태블릿 해상도일 경우 */
-@media screen and (min-width:768px) and (max-width:1024px) {
-  .slide_wrapper div img{
-    height:100vh;object-fit:cover;
-  }
-}
-/* 모바일 해상도일 경우 */
-@media screen and (max-width:768px) {
-  .slide_wrapper div img{height:100vh;object-fit: cover;}
-}
 .lnb ul{
   position:absolute;bottom:50%;right:5%;z-index:100;
 }
@@ -66,7 +54,7 @@ i.fas{
   width: var(--w_size);
   display: flex; margin: 60px auto;
 }
-.news_con article{height: 500px; margin-right: 25px;}
+.news_con article{height: 500px;}
 .news_con h2{
   font-size: 44px;
   font-weight: bold;
@@ -74,9 +62,9 @@ i.fas{
 }
 .news_con h2 img{width: 280px;}
 .news_con h2 span{font-size: 1.5rem; display: block;}
-.news_con .youtube{width: 665px;}
+.news_con .youtube{width: 100%; padding: 0;}
 .news_con iframe{width: 100%; height: 315px;}
-.news_con .notice{width: 520px;}
+.news_con .notice{width: 100%; padding: 0;}
 .news_con .notice i.fa-circle{
   color: #f36f21; font-size: 1rem;
   padding-right: 6px;
@@ -124,13 +112,13 @@ i.fas{
 .tab_con dl dd{font-size: 1rem; line-height: 180%;}
 /* 메뉴클릭시 적용되는 서식 */
 .t_act{background-color: #f36f21 !important;}
-i.fa-angle-down{display: none;} /*pc버전에선 안보이게*/
+.tab_con .fa-solid{display: none;} /*pc버전에선 안보이게*/
 
 /* 4. 인기제품 서식 */
-.best_product { width:100%; background:#ffc845; padding:60px 0px; } 
-.best_product article { width:1200px; margin:0px auto; } 
+.best_product{ width:100%; background:#ffc845; padding:60px 0px; } 
+.best_product article{width:1200px; margin:0px auto; } 
 .title2 { font-size:32px; font-weight:bold; padding-bottom:20px; } 
-.best_product ul { display:flex; } 
+.best_product ul{ display:flex; } 
 .best_product ul > li { width:25%; padding:0px 10px; box-sizing:border-box; } 
 .best_product ul > li img { width:100%; } 
 .best_product ul > li h3 { font-size:24px;border-bottom:1px solid #9f5e05; height:60px; padding-top:10px; } 
@@ -141,7 +129,7 @@ i.fa-angle-down{display: none;} /*pc버전에선 안보이게*/
 .event article{position: relative; overflow: hidden;}
 .es_wrap{display: flex; width: 3600px;}
 .e_slide{width: 1200px;}
-.event i.fa-solid{position: absolute; top: 160px; font-size: 30px; padding: 5px 12px; border-radius: 50%; border: 1px solid #333; background-color: #fff;}
+.event i.fa-solid{position: absolute; top: 160px; font-size: 30px; padding: 5px 12px; border-radius: 50%; border: 1px solid #333; background-color: #fff; cursor: pointer;}
 .event i.fa-angle-left{left: -55px;}
 .event i.fa-angle-right{right: -55px;}
 .e_slide a{display: flex;}
@@ -149,3 +137,94 @@ i.fa-angle-down{display: none;} /*pc버전에선 안보이게*/
 .e_txt span{background-color: #ccc; padding: 5px 10px;}
 .e_txt h3{font-size: 18px; line-height: 60px;}
 .e_txt p{font-size: 16px;}
+
+/* 6. 미에로 스토리 갤러리 */
+.gallery { background:#f36f21; } 
+.gallery article { width:1200px; margin:0px auto; padding:60px 0px; } 
+.gallery article > h2 { font-size:32px; font-weight:bold; color:#fff; padding-bottom:50px; } 
+.girl { width: 1200px; display: grid; grid-template-rows: 270px 270px 270px; padding: 20px; grid-gap: 20px; grid-template-areas:
+"g01 g03 g04"
+"g02 g03 g05"
+"g06 g07 g08"; } 
+figure { overflow: hidden; } 
+figure:hover figcaption { transform: translate(0px, -83px); } 
+.girl figcaption { height: 80px; background-color: #111111; position: relative; transition: 0.5s; } 
+figcaption h6 { font-size: 20px; font-weight: bold; color: #f36f21; padding: 10px 0px 5px 20px; } 
+figcaption p { font-size: 10px; color: #ffffff; padding: 5px 0px 0px 20px; } 
+
+figcaption span { border: 1px solid #ffffff; font-size: 12px; color: #ffffff; padding: 5px; position: absolute; right: 20px; bottom: 15px; } 
+.girl img { width: 100%; } 
+.girl figure:first-child { grid-area: g01; } 
+.girl figure:nth-child(2) { grid-area: g02; } 
+.girl figure:nth-child(3) { grid-area: g03; } 
+.girl figure:nth-child(4) { grid-area: g04; } 
+.girl figure:nth-child(5) { grid-area: g05; } 
+.girl figure:nth-child(6) { grid-area: g06; } 
+.girl figure:nth-child(7) { grid-area: g07; } 
+.girl figure:last-child { grid-area: g08; } 
+
+
+/* 태블릿 해상도일 경우 */
+@media screen and (min-width:768px) and (max-width:1024px) {
+  .slide_wrapper div img{
+    height:100vh;object-fit:cover;
+  }
+}
+/* 모바일 해상도일 경우 */
+@media screen and (max-width:768px) {
+  /* 메인 슬라이드 */
+  .slide{height: 570px;}
+  .slide_wrapper div img{height:100vh;object-fit: cover;}
+
+  /* 2. 뉴스콘텐츠서식 */
+  .news_con{
+    width: 98%;
+    display: block; margin: 60px auto;
+  }
+  .news_con article{height: auto; padding: 2%; margin: 0;}
+  .news_con article > h2 img{width: 210px;}
+  .news_con article > h2 span{font-size: 20px;}
+  .news_con article > h2{font-size: 2rem;}
+  .news_con .youtube, .news_con .notice{width: 100%;}
+
+  /* 3. 탭콘텐츠 서식 */
+  .tab_con_wrap article{
+    width: 100%; height: 800px;
+    background-position: center bottom;
+    background-size: 360px;
+  }
+  .tab_con_wrap article > h2{text-align: center;}
+  .tab_con{display: block; padding-top: 20px;}
+  .tab_con li a{display: block;}
+  .tab_con .fa-solid{display: block; float: right;}
+  .cont{position: static; width: 100%;}
+  .tab_con li img{width: 96%;}
+
+  
+  /* 4. 제품소개 서식 */
+  .best_product article{width: 100%; text-align: center;}
+  .best_product ul{display: block; width: 98%; margin: 0 auto;}
+  .best_product ul > li{width: 100%;}
+  .best_product ul > li img{width: 60%;}
+  .bext_product p{text-align: left;}
+
+  /* 5. 이벤트 서식 */
+  .event{width: 100%; margin: 20px 0;}
+  .event .title2{padding: 30px 0px; text-align: center;}
+  .es_wrap{display: flex; width: 300%;}
+  .e_slide{display: block;}
+  .e_slide, .e_slide img{width: 100%;}
+  .e_slide a{display: block;}
+  .e_slide .e_txt{padding: 10px 0px 0px 40px; height: 120px;}
+  .e_slide i.fa-solid{top: 140px;}
+  .event i.fa-angle-left{left: 10px;}
+  .event i.fa-angle-right{right: 10px;}
+  
+  /* 6. 갤러리 */
+  .gallery article {width: 100%; margin: 0px;}
+  .gallery article > h2{text-align:center;}
+  .girl {width: 100%; display:block;box-sizing: border-box;}
+  figure { height:300px;overflow: hidden; } 
+  figure:hover figcaption { transform: translate(0px, -83px)}; 
+  .girl figure:nth-child(3){height:650px;}
+}

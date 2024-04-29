@@ -19,6 +19,29 @@ header > h1{
 }
 header > h1 img{width: 100%;}
 
+/* pc버전에서 토글버튼 숨기기 */
+#toggle{
+  display: none;
+  width: 32px; height: 30px;
+  padding: 8px;
+  background: rgba(0,0,0,.3);
+  position: absolute; right: 3%; top: 24px;
+  border: 1px solid #fff;
+}
+#toggle:hover{
+  background: var(--main_color);  
+  border: 1px solid var(--main_color);
+}
+#toggle span{
+  background-color: #fff;
+  display: inline-block;
+  width: 32px; height: 2px;
+  position: absolute;
+}
+#toggle span:first-child{top: 12px;}
+#toggle span:nth-child(2){top: 22px;}
+#toggle span:last-child{top: 32px;}
+
 /* 메인메뉴 서식 */
 .gnb{
   position: absolute; right: 3%; top: 40px;
@@ -88,7 +111,6 @@ footer{
   width: 1200px; margin: 0 auto;
   padding: 50px 0;
 }
-.f_inner > nav a{}
 .f_inner > nav a:hover{text-decoration: none;}
 .f_inner > nav > dl{line-height: 30px;}
 .f_inner dl dt a{
@@ -132,3 +154,82 @@ address h2 img{
   width: 100%;
 }
 address p{ padding-right: 3%; line-height: 70px;}
+
+/* 모달창 */
+.modal{
+  width: 100%; height: 100%; 
+  background-color: rgba(0,0,0,.4); 
+  position: absolute; top: 0; left: 0;
+  color: #fff;
+  font-weight: bold;
+}
+.modal .m_inner{
+  width: 400px; margin: 0 auto;
+  transform: translateY(50%);      
+}
+.modal .m_inner a{
+  display: block;
+  width: 400px; height: 400px; margin: 0px auto 10px auto;
+  border-radius: 5%; overflow: hidden;
+}
+.modal .m_inner img{width: 100%;}
+.modal input[type=checkbox]{-display: none;}
+.modal label{cursor: pointer;}
+.modal input[type=button]{
+  float: right;
+  border: none;
+  color: #fff;
+  background-color: transparent;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+/* 모바일 해상도일 경우 */
+@media screen and (max-width: 767px) {
+  header > h1{top: 20px;} /*header > h1으로 선택자를 썼는데 여기서 h1만 쓰면 선택자 레벨이 낮아져서 서식이 먹지 않는다.*/
+  /* 토글보이게하기 */
+  #toggle{display: block;}
+  
+  /* gnb */
+  .gnb{
+    display: none;
+    background-color: var(--txt_color1);
+    width: 90%; top: 90px; right: 5%;
+  }
+  .gnb > ul > li{
+    text-align: center;
+    margin: 0;
+  }
+  .gnb > ul > li > a{
+    font-size: 0.85rem;
+    color: var(--base_txt_color);
+  }
+  .gnb > ul{display: block;}
+  .gnb > ul > li:last-child > a{
+    background-color: var(--main_color);
+    border: none; color: var(--txt_color1);
+    display: block;
+  }
+  .gnb li .sub{
+    width: 100%; z-index: 100; 
+    padding: 0; border: none;
+  }
+  .gnb li .sub li a{background-color: #e8e8e8;}
+  .gnb li:first-child .sub{width: 100%; left: 0;}
+  .gnb li:nth-child(2) .sub{width: 100%; left: 0;}
+
+  /* 모바일 푸터영역 서식 */
+  .f_inner > nav{
+    width: 96%;
+    flex-wrap: wrap;
+  }
+  .f_inner > nav > dl{width:50%; margin-bottom: 10px;}
+  .f_inner dl:last-child{width: 100%;} /*너비값 50%에서 100%줘서 가운데 배치*/
+  address{
+    display: block; text-align: center; 
+    height: 100px; width: 100%;
+  }
+  address h2{width: 30%; margin: 0 auto;}
+  address p{padding-right: 0%; line-height: 160%; font-size: 0.9rem;}
+}
