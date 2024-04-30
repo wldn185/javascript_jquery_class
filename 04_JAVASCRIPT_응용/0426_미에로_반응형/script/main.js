@@ -9,7 +9,24 @@ $(document).ready(function(){
   const r_btn = $('main .slide .s_btn li:last-child img');
   let t_mnu = $('.tab_con li a');
   // 모바일 토글
-  const toggle = $('#toggle')
+  const toggle = $('#toggle');
+  // 탑버튼
+  const t_btn = $('.t_btn');
+
+  t_btn.hide();
+  $(window).scroll(function(){
+    let spos = $(this).scrollTop();
+    if(spos >= 1100){
+      t_btn.fadeIn();
+    }else{
+      t_btn.fadeOut();
+    }
+  });
+  t_btn.click(function(){
+    $('html, body').animate({'scrollTop':'0px'}, 300);
+  });
+
+
   // 모바일 해상도에서 토글버튼 클릭하면 메인메뉴가 아래로 펼처지거나 위로 접히게 한다.
   toggle.click(function(){
     $('.gnb').slideToggle();
@@ -18,9 +35,29 @@ $(document).ready(function(){
   // tab콘텐츠 탭메뉴 클릭시 a서식 지우고 클릭한 메뉴만 t_act적용하기
   t_mnu.click(function(e){
     e.preventDefault();
+    let t_index;
     let w_size = $(window).width();
 
-    if(window >= 768){ //pc와 태블릿 해상도일 경우 적용되는 기능
+    if(w_size >= 1025){ //pc해상도일 경우 적용되는 기능
+      //탭메뉴 클릭시 아이콘 폰트 방향이 변경되어야함
+      $(this).find('i.fa-solid').attr('class','fa-solid fa-caret-up').parent().parent().siblings().find('i.fa-solid').attr('class','fa-solid fa-caret-down');
+
+      $(this).addClass('t_act').parent().siblings().find('a').removeClass('t_act');
+      $('.cont').hide();
+      $(this).next().show();
+
+      t_index = $(this).parent().index(); //인덱스값은 a태그로 안구해지고 li로 구해진다. 똑같은 태그가 나열되어야하기 때문이다. a는 li에 들어가있기때문에 나란히 나열되어있지않다. 그래서 나란히 나열되어있는 li로 인덱스값을 구해야한다.
+      console.log(t_index); //0, 1, 2
+
+      if(t_index==2){
+        $('.tab_con_wrap article').height(800);
+      }else{
+        $('.tab_con_wrap article').height(500);
+      }
+    }else if(w_size >= 768){
+      //탭메뉴 클릭시 아이콘 폰트 방향이 변경되어야함
+      $(this).find('i.fa-solid').attr('class','fa-solid fa-caret-up').parent().parent().siblings().find('i.fa-solid').attr('class','fa-solid fa-caret-down');
+
       $(this).addClass('t_act').parent().siblings().find('a').removeClass('t_act');
       $('.cont').hide();
       $(this).next().show();
@@ -29,14 +66,14 @@ $(document).ready(function(){
       console.log(t_index); //0, 1, 2
 
       if(t_index==2){
-        $('.tab_con_wrap article').height(800);
+        $('.tab_con_wrap article').height(1200);
       }else{
-        $('.tab_con_wrap article').height(500);
+        $('.tab_con_wrap article').height(1000);
       }
     }else{ //화면의 너비가 767보다 작으면(모바일화면)      
 
       //탭메뉴 클릭시 아이콘 폰트 방향이 변경되어야함
-      $(this).find('i.fa-solid').attr('class','fa-solid fa-angle-up').parent().parent().siblings().find('i.fa-solid').attr('class','fa-solid fa-angle-down');
+      $(this).find('i.fa-solid').attr('class','fa-solid fa-caret-up').parent().parent().siblings().find('i.fa-solid').attr('class','fa-solid fa-caret-down');
 
       // $('.cont').hide(); //보이는 콘텐츠 모두 숨기고
       $(this).next().slideToggle().parent().siblings().find('div').slideUp();
@@ -207,12 +244,12 @@ $(document).ready(function(){
   });
 
   // 모달창
-   // 1. 변수선언
+  // 1. 변수선언
   let modal = `
     <div class='modal'>
       <div class='m_inner'>
-        <a hred='#' title=''>
-          <img src='./images/modal.jpg' alt='배너'>
+        <a href='#' title=''>
+          <img src='./images/event9.jpg' alt='배너'>
         </a>
         <input type='checkbox' id='ch'>
         <label for='ch'>오늘 하루 열지 않음</label>
@@ -247,6 +284,27 @@ $(document).ready(function(){
   $('#c_btn, #ch').click(function(){
     close_popup();
     //#ch도 추가시켜주면 '오늘 하루 열지 않음'만 클릭해도 모달창이 하루동안 숨겨짐
+  });
+
+  // 더보기 버튼 클릭시 ajax비동기 방식을 통해 json데이터를 불러와 목록을 추가한다.
+  $('.more').click(function(){
+    $.ajax({
+      url: "json/product.json",
+      type: "post",
+      dataType: "json",
+      success:function(result){
+        // alert(result);
+        var t = "<ul>";
+        $.each(result.product, function(i,e){
+          // alert(i);
+          t+="<li><img src='./add_img/"+e.path+"' alt='"+e.tit+"'></li>";
+        });
+        t+="</ul>";
+        $('#list').html(t);
+      }
+    });
+    $(this).hide();
+    return false;
   });
 
 });

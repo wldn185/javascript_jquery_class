@@ -18,7 +18,7 @@
 /* 좌우버튼 서식 */
 .s_btn{
   position: absolute; bottom:165px; left: 90px;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
 }
 .s_btn li{
@@ -161,7 +161,38 @@ figcaption span { border: 1px solid #ffffff; font-size: 12px; color: #ffffff; pa
 .girl figure:nth-child(5) { grid-area: g05; } 
 .girl figure:nth-child(6) { grid-area: g06; } 
 .girl figure:nth-child(7) { grid-area: g07; } 
-.girl figure:last-child { grid-area: g08; } 
+.girl figure:last-child { grid-area: g08; }
+
+/* 모달 */
+.modal{
+  width: 100%; height: 100%; 
+  background-color: rgba(0,0,0,.4); 
+  position: fixed; top: 0; left: 0;
+  color: #fff;
+  font-weight: bold;
+  z-index: 999;
+}
+.modal .m_inner{
+  width: 400px; margin: 0 auto;
+  transform: translateY(50%);      
+}
+.modal .m_inner a{
+  display: block;
+  width: 400px; height: 400px; margin: 0px auto 10px auto;
+  border-radius: 5%; overflow: hidden;
+}
+.modal .m_inner img{width: 100%;}
+.modal input[type=checkbox]{-display: none;}
+.modal label{cursor: pointer;}
+.modal input[type=button]{
+  float: right;
+  border: none;
+  color: #fff;
+  background-color: transparent;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+}
 
 
 /* 태블릿 해상도일 경우 */
@@ -171,7 +202,7 @@ figcaption span { border: 1px solid #ffffff; font-size: 12px; color: #ffffff; pa
   }
 }
 /* 모바일 해상도일 경우 */
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
   /* 메인 슬라이드 */
   .slide{height: 570px;}
   .slide_wrapper div img{height:100vh;object-fit: cover;}
@@ -227,4 +258,60 @@ figcaption span { border: 1px solid #ffffff; font-size: 12px; color: #ffffff; pa
   figure { height:300px;overflow: hidden; } 
   figure:hover figcaption { transform: translate(0px, -83px)}; 
   .girl figure:nth-child(3){height:650px;}
+}
+
+@media screen and (min-width:768px) and (max-width:1024px){
+  /* 메인슬라이드 서식 */
+  .slide{
+    
+  }
+  .slide_wrapper div{
+    width: 270%; height: 560px;
+    object-fit: cover;
+    transform: translateX(-260px);
+  }
+
+  /* 2. 유튜브 콘텐츠 */
+  .news_con{width: 90%; display: block;}
+  .news_con .notice{padding-top: 100px;}
+  .news_con .notice li a{font-size: 1.1rem;}
+  .news_con article{height: 350px;}
+
+  /* 탭콘텐츠 */
+  .tab_con_wrap article{
+    width: 100%; height: 800px;
+    background-position: center bottom;
+    background-size: 360px;
+  }
+  .tab_con_wrap article > h2{text-align: center;}
+  .tab_con{display: block; padding-top: 20px;}
+  .tab_con li a{display: block; line-height: 200%; font-size: 1.2rem;}
+  .tab_con .fa-solid{display: block; float: right; transform: translateY(10px);}
+  .cont{position: static; width: 100%; padding: 1.5%; box-sizing: border-box;}
+  .tab_con li img{width: 96%;}
+
+  /* 4. 제품소개 서식 */
+  .title2 {padding-left: 20px;} 
+  .best_product article{width:100%;} 
+  .best_product ul{ display:flex; flex-wrap: wrap;} 
+  .best_product ul > li { width:50%;}
+
+  /* 5. 이벤트 서식 */
+  .event{width: 100%; margin: 20px 0;}
+  .event .title2{padding: 20px 0px 30px 20px; text-align: left;}
+  .es_wrap{display: flex; width: 300%;}
+  .e_slide{display: block;}
+  .e_slide, .e_slide img{width: 100%;}
+  .e_slide a{display: block;}
+  .e_slide .e_txt{padding: 10px 0px 0px 40px; height: 120px;}
+  .e_slide i.fa-solid{top: 140px;}
+  .event i.fa-angle-left{left: 10px;}
+  .event i.fa-angle-right{right: 10px;}
+
+  /* 6. 미에로 스토리 갤러리 */
+  .gallery h2{padding: 20px 0px 30px 20px;}
+  .gallery article { width:100%; } 
+  .girl { width: 96%; margin: 0 auto; display: grid; grid-template-rows: repeat(3, 30%); padding: 0;} 
+  figure { height: 164px; } 
+  .girl > figure:nth-child(3){height: 344px;}
 }
