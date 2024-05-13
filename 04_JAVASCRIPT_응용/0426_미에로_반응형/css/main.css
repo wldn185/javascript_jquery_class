@@ -107,7 +107,7 @@ i.fas{
   display: none;
 }
 .tab_con li:first-child .cont{display: block;}
-.tab_con dl{}
+
 .tab_con dl dt{font-size: 1.5rem; font-weight: bold; margin: 20px 0px 20px;}
 .tab_con dl dd{font-size: 1rem; line-height: 180%;}
 /* 메뉴클릭시 적용되는 서식 */
@@ -162,6 +162,9 @@ figcaption span { border: 1px solid #ffffff; font-size: 12px; color: #ffffff; pa
 .girl figure:nth-child(6) { grid-area: g06; } 
 .girl figure:nth-child(7) { grid-area: g07; } 
 .girl figure:last-child { grid-area: g08; }
+
+/* 더보기 갤러리 */
+#list {border: 1px solid blue;}
 
 /* 모달 */
 .modal{
@@ -262,9 +265,6 @@ figcaption span { border: 1px solid #ffffff; font-size: 12px; color: #ffffff; pa
 
 @media screen and (min-width:768px) and (max-width:1024px){
   /* 메인슬라이드 서식 */
-  .slide{
-    
-  }
   .slide_wrapper div{
     width: 270%; height: 560px;
     object-fit: cover;
